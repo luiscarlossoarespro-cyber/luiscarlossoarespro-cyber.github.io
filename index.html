@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Luis Carlos Machado Soares · Portfólio de Dados</title>
+<meta name="description" content="Portfólio de Análise de Dados de Luis Carlos Machado Soares: dashboards, indicadores e decisões. 19 anos em logística e operações.">
+<meta property="og:title" content="Luis Carlos Machado Soares · Portfólio de Dados">
+<meta property="og:description" content="Dashboards e análises que transformam dados do dia a dia em decisões.">
+<meta property="og:image" content="https://raw.githubusercontent.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal/main/assets/cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#060a13;--card:#0c1424;--card2:#111b2f;--line:rgba(150,175,215,.12);--line2:rgba(150,175,215,.22);--tx:#eef2f8;--tx2:#aab5c8;--tx3:#7c899f;--blue:#6fa8ff;--purple:#b69cff;--green:#5ee0a0;--amber:#f7c25a;--red:#ff6b6b;--ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--fh:"Inter Tight","Inter",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:15px/1.6 var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 520px at 10% -10%,rgba(111,168,255,.13),transparent 60%),radial-gradient(800px 600px at 100% 20%,rgba(182,156,255,.08),transparent 60%),linear-gradient(rgba(150,175,215,.035) 1px,transparent 1px) 0 0/100% 56px}
+a{color:inherit}
+.w{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+nav{position:sticky;top:0;z-index:10;background:rgba(6,10,19,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.lg{display:flex;align-items:center;gap:10px;font:800 15px var(--fh);text-decoration:none}
+.lg i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#06101f;background:linear-gradient(135deg,var(--blue),var(--purple))}
+.nl{display:flex;gap:4px;flex-wrap:wrap}
+.nl a{text-decoration:none;font-size:13px;font-weight:600;color:var(--tx2);padding:7px 11px;border-radius:9px}
+.nl a:hover{color:var(--tx);background:rgba(255,255,255,.05)}
+@media(max-width:640px){.nl a:not(.cta){display:none}}
+.cta{background:var(--blue);color:#06101f!important}
+header.hero{padding-block:clamp(56px,10vw,120px) 40px}
+.kk{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px}
+.kk::before{content:"";width:22px;height:2px;background:currentColor}
+h1{font:800 clamp(34px,5.6vw,64px)/1.04 var(--fh);letter-spacing:-.035em;margin:16px 0 18px;text-wrap:balance;max-width:16ch}
+h1 span{background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.6vw,19px);color:var(--tx2);max-width:60ch}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.b{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;padding:12px 18px;border-radius:12px;border:1px solid var(--line2);transition:transform .2s,background .2s}
+.b:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
+.b.p{background:linear-gradient(135deg,var(--blue),var(--purple));color:#06101f;border:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:48px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.st{padding:18px;border-radius:16px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line)}
+.st b{display:block;font:800 clamp(24px,2.6vw,32px)/1 var(--fh);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.st span{display:block;font-size:12.5px;color:var(--tx3);margin-top:8px}
+section{padding-block:clamp(48px,7vw,90px) 0}
+h2{font:800 clamp(26px,3.2vw,38px)/1.1 var(--fh);letter-spacing:-.025em;margin:12px 0 10px;text-wrap:balance}
+.sub{color:var(--tx2);max-width:64ch}
+.pj{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:center;margin-top:36px;padding:22px;border-radius:22px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line);transition:border-color .3s,transform .3s}
+.pj:hover{border-color:var(--line2);transform:translateY(-3px)}
+.pj:nth-of-type(even) .im{order:2}
+@media(max-width:900px){.pj{grid-template-columns:minmax(0,1fr)}.pj:nth-of-type(even) .im{order:0}}
+.im{text-decoration:none;color:inherit;display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:#0a1120;max-width:100%}
+.im img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .6s}
+.pj:hover .im img{transform:scale(1.03)}
+.nfc{width:100%;height:100%;padding:clamp(14px,2.4vw,26px);display:flex;flex-direction:column;gap:14px;background:radial-gradient(400px 220px at 90% 0%,rgba(229,9,20,.28),transparent 70%),linear-gradient(160deg,#1a0f16,#0b0d16)}.nfh{font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff6b7a}.nfg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.nfg div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}.nfg b{display:block;font:800 clamp(18px,2.2vw,26px)/1 var(--fh)}.nfg span{font-size:11.5px;color:var(--tx3)}.nfb{display:flex;align-items:flex-end;gap:6px;flex:1;min-height:30px}.nfb i{flex:1;height:var(--w);border-radius:5px 5px 0 0;background:linear-gradient(180deg,#ff6b7a,#b8243a)}
+.tg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tg span{font-size:11px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:99px;color:var(--c,var(--blue));background:color-mix(in srgb,var(--c,var(--blue)) 13%,transparent);border:1px solid color-mix(in srgb,var(--c,var(--blue)) 35%,transparent)}
+.pj h3{font:800 clamp(21px,2.2vw,27px)/1.15 var(--fh);letter-spacing:-.02em}
+.pj p{color:var(--tx2);margin:10px 0 14px}
+.pj ul{padding-left:18px;color:var(--tx2);font-size:14px;display:grid;gap:4px;margin-bottom:18px}
+.pj ul b{color:var(--tx)}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:30px}
+@media(max-width:900px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fs{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.fs b{display:block;font:800 13px var(--fh);color:var(--blue)}
+.fs strong{display:block;font-size:14.5px;margin:6px 0 4px}
+.fs span{font-size:12.5px;color:var(--tx3)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+@media(max-width:800px){.two{grid-template-columns:minmax(0,1fr)}}
+.bx{padding:22px;border-radius:18px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line)}
+.bx h3{font:700 16px var(--fh);margin-bottom:12px}
+.bx ul{list-style:none;padding:0;display:grid;gap:9px}
+.bx li{display:grid;grid-template-columns:10px minmax(0,1fr);gap:10px;color:var(--tx2);font-size:14px}
+.bx li::before{content:"";width:8px;height:8px;border-radius:50%;margin-top:8px;background:var(--c,var(--blue))}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--tx2)}
+footer{margin-top:90px;border-top:1px solid var(--line);padding-block:36px 50px}
+footer .w{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;color:var(--tx3);font-size:13px}
+.rv{opacity:0;transform:translateY(34px);filter:blur(4px);transition:opacity .9s cubic-bezier(.16,.84,.3,1),transform .9s cubic-bezier(.16,.84,.3,1),filter .9s;transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;filter:none;transition:none}}
+</style>
+</head>
+<body>
+<nav><div class="w"><a class="lg" href="#topo"><i>LC</i>Luis Carlos · Dados</a><div class="nl"><a href="#projetos">Projetos</a><a href="#metodo">Método</a><a href="#trajetoria">Trajetória</a><a class="cta" href="https://www.linkedin.com/in/luiscarlos-log" target="_blank" rel="noopener">LinkedIn ↗</a></div></div></nav>
+
+<header class="hero w" id="topo">
+  <div class="kk rv">Portfólio de Análise de Dados</div>
+  <h1 class="rv" style="--d:.08s">Dados do dia a dia viram <span>decisões</span>.</h1>
+  <p class="lead rv" style="--d:.16s">Sou <b>Luis Carlos Machado Soares</b>. Depois de <b>19 anos em logística e operações</b>, uso a mesma disciplina de conferência e controle para transformar registros em indicadores, diagnósticos e planos de ação.</p>
+  <div class="btns rv" style="--d:.24s"><a class="b p" href="#projetos">Ver projetos ↓</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a><a class="b" href="https://www.linkedin.com/in/luiscarlos-log" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <div class="stats">
+    <div class="st rv" style="--d:.1s"><b data-n="19">19</b><span>anos em logística e operações</span></div>
+    <div class="st rv" style="--d:.18s"><b data-n="3">3</b><span>projetos de dados publicados</span></div>
+    <div class="st rv" style="--d:.26s"><b data-n="80" data-p="+">+80</b><span>colaboradores treinados na operação</span></div>
+    <div class="st rv" style="--d:.34s"><b data-n="40" data-p="até ">até 40</b><span>caminhões carregados por dia no pico</span></div>
+  </div>
+</header>
+
+<section id="projetos" class="w">
+  <div class="kk rv">Projetos</div>
+  <h2 class="rv">Do problema de negócio ao dashboard</h2>
+  <p class="sub rv">Todos os projetos seguem o mesmo padrão: problema, perguntas, dados, tratamento, indicadores e decisão.</p>
+
+  <article class="pj rv">
+    <a class="im" href="https://luiscarlossoarespro-cyber.github.io/erp-financeiro-pessoal/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal/main/assets/cover.png" alt="Dashboard estratégico do ERP Financeiro Pessoal" loading="lazy"></a>
+    <div>
+      <div class="tg"><span>Google Sheets</span><span>HTML · CSS · JS</span><span style="--c:var(--purple)">IA (Claude)</span><span style="--c:var(--green)">Gestão ágil</span></div>
+      <h3>ERP Financeiro Pessoal — Dashboard Estratégico</h3>
+      <p>Sistema que lê uma planilha e mostra gargalos, fase atual, próxima decisão, auditoria de contas, dívidas, custo dos bancos e a sprint do mês.</p>
+      <ul><li><b>Diagnóstico:</b> gargalos ranqueados e ligados a decisões</li><li><b>Auditoria:</b> vencidas, aumentos fora do normal e duplicidades</li><li><b>Gestão ágil:</b> backlog, kanban, retrospectiva e placar de regras</li></ul>
+      <div class="btns" style="margin-top:0"><a class="b p" href="https://luiscarlossoarespro-cyber.github.io/erp-financeiro-pessoal/" target="_blank" rel="noopener">Ver demonstração ↗</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal" target="_blank" rel="noopener">Documentação</a></div>
+    </div>
+  </article>
+
+  <article class="pj rv">
+    <a class="im" href="https://luiscarlossoarespro-cyber.github.io/analise-vendas-online/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/luiscarlossoarespro-cyber/analise-vendas-online/main/assets/cover.png" alt="Dashboard de análise de vendas online" loading="lazy"></a>
+    <div>
+      <div class="tg"><span style="--c:var(--green)">Excel</span><span>HTML · CSS · JS</span><span style="--c:var(--tx2)">GitHub Pages</span></div>
+      <h3>Análise de Vendas Online</h3>
+      <p>1.000 pedidos de 15 países em 24 meses: receita, custo, margem e ticket médio por categoria, país, gerente, representante e dispositivo.</p>
+      <ul><li><b>€ 113,4 M</b> de receita com margem bruta de <b>16,8%</b></li><li>Portugal e França concentram quase <b>metade da receita</b></li><li>Filtros combinados e exportação do recorte em CSV</li></ul>
+      <div class="btns" style="margin-top:0"><a class="b p" href="https://luiscarlossoarespro-cyber.github.io/analise-vendas-online/" target="_blank" rel="noopener">Ver dashboard ↗</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber/analise-vendas-online" target="_blank" rel="noopener">Documentação</a></div>
+    </div>
+  </article>
+
+  <article class="pj rv">
+    <a class="im" href="https://public.tableau.com/app/profile/lu.s.carlos.machado.soares/viz/Livro1_17865361765710/Netflix" target="_blank" rel="noopener"><div class="nfc" role="img" aria-label="Resumo do dashboard do catálogo da Netflix"><div class="nfh">TABLEAU PUBLIC · CATÁLOGO NETFLIX</div><div class="nfg"><div><b>70%</b><span>filmes · 5.366 títulos</span></div><div><b>30%</b><span>séries · 2.293 títulos</span></div><div><b>2.732</b><span>títulos dos EUA</span></div><div><b>2018</b><span>ano com mais lançamentos</span></div></div><div class="nfb"><i style="--w:52%"></i><i style="--w:83%"></i><i style="--w:90%"></i><i style="--w:100%"></i><i style="--w:79%"></i><i style="--w:47%"></i></div></div></a>
+    <div>
+      <div class="tg"><span style="--c:var(--amber)">Tableau Public</span><span style="--c:var(--tx2)">Projeto guiado</span></div>
+      <h3>Netflix — Análise do Catálogo</h3>
+      <p>Composição do catálogo de filmes e séries: tipo de conteúdo, países produtores, anos de lançamento e duração.</p>
+      <ul><li><b>70%</b> do catálogo são filmes (5.366 títulos)</li><li><b>EUA</b> lideram com 2.732 títulos</li><li><b>2018</b> é o ano com mais lançamentos (1.142)</li></ul>
+      <div class="btns" style="margin-top:0"><a class="b p" href="https://public.tableau.com/app/profile/lu.s.carlos.machado.soares/viz/Livro1_17865361765710/Netflix" target="_blank" rel="noopener">Ver no Tableau ↗</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber/analise-catalogo-netflix" target="_blank" rel="noopener">Documentação</a></div>
+    </div>
+  </article>
+</section>
+
+<section id="metodo" class="w">
+  <div class="kk rv">Método</div>
+  <h2 class="rv">Como eu trabalho</h2>
+  <p class="sub rv">O mesmo raciocínio de quem confere uma carga: nada passa sem checagem, e todo número precisa levar a uma ação.</p>
+  <div class="flow">
+    <div class="fs rv" style="--d:.0s"><b>01</b><strong>Problema</strong><span>Qual decisão precisa ser tomada?</span></div>
+    <div class="fs rv" style="--d:.07s"><b>02</b><strong>Perguntas</strong><span>O que os dados precisam responder</span></div>
+    <div class="fs rv" style="--d:.14s"><b>03</b><strong>Dados</strong><span>Coleta, limpeza e validação</span></div>
+    <div class="fs rv" style="--d:.21s"><b>04</b><strong>Indicadores</strong><span>KPIs com meta e significado</span></div>
+    <div class="fs rv" style="--d:.28s"><b>05</b><strong>Dashboard</strong><span>Visual claro, filtros e alertas</span></div>
+    <div class="fs rv" style="--d:.35s"><b>06</b><strong>Decisão</strong><span>Ação, acompanhamento e aprendizado</span></div>
+  </div>
+</section>
+
+<section id="trajetoria" class="w">
+  <div class="kk rv">Trajetória</div>
+  <h2 class="rv">Operação na prática, dados como próximo passo</h2>
+  <div class="two">
+    <div class="bx rv"><h3>Experiência em logística e operações</h3><ul>
+      <li>Conferência de cargas, controle de estoque e acuracidade de inventário</li>
+      <li>Mais de 100 paletes conferidos por dia e em média 29 caminhões carregados por dia (até 40 no verão)</li>
+      <li>Liderança informal de equipes de 20 e de 50 pessoas e mais de 80 colaboradores treinados</li>
+      <li>Uso de coletor de dados (PDL) e sistemas WMS</li></ul></div>
+    <div class="bx rv" style="--d:.1s;--c:var(--purple)"><h3>Formação em andamento</h3><ul>
+      <li>Administração de Empresas e Tecnólogo em Processos Gerenciais</li>
+      <li>Técnico em Análise de Dados</li>
+      <li>Excel para Análise de Dados · Excel do básico ao avançado</li>
+      <li>Scrum: gerenciando projetos com agilidade</li></ul></div>
+  </div>
+  <div class="bx rv" style="margin-top:16px"><h3>Ferramentas</h3><div class="chips"><span>Excel</span><span>Google Sheets</span><span>Tableau Public</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub</span><span>IA generativa (Claude)</span><span>Scrum · Kanban</span></div></div>
+</section>
+
+<footer><div class="w"><span>© 2026 Luis Carlos Machado Soares · Portfólio de Análise de Dados</span><div class="btns" style="margin:0"><a class="b" href="https://www.linkedin.com/in/luiscarlos-log" target="_blank" rel="noopener">LinkedIn ↗</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a></div></div></footer>
+
+<script>
+(function(){var els=document.querySelectorAll(".rv");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");x.target.querySelectorAll?count(x.target):0;io.unobserve(x.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+els.forEach(function(e){io.observe(e)});
+function count(el){var b=el.querySelector("b[data-n]");if(!b||matchMedia("(prefers-reduced-motion: reduce)").matches)return;var n=+b.getAttribute("data-n"),p=b.getAttribute("data-p")||"",t0=null;
+  function s(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1200),e=1-Math.pow(1-k,4);b.textContent=p+Math.round(n*e);if(k<1)requestAnimationFrame(s)}requestAnimationFrame(s)}})();
+</script>
+</body>
+</html>

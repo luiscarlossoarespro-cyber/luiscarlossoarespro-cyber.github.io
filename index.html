@@ -3,240 +3,380 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Luis Carlos Machado Soares · Analista de Dados Jr | Logística</title>
-<meta name="description" content="Analista de dados júnior com mais de 16 anos em logística e operações. Projetos com SQL, Python, Excel e dashboards que respondem perguntas de negócio.">
-<meta property="og:title" content="Luis Carlos Machado Soares · Analista de Dados Jr | Logística">
-<meta property="og:description" content="Mais de 16 anos em logística, agora transformando dados da operação em decisões. Veja os projetos.">
-<meta property="og:image" content="https://raw.githubusercontent.com/luiscarlossoarespro-cyber/olist-logistica-entregas/main/graficos/02_atraso_por_estado.png">
+<title>Luis Carlos Machado Soares · Análise de Dados | Logística</title>
+<meta name="description" content="Análise de dados aplicada à logística: SQL, Python, estatística e dashboards. 19 anos de carreira em operações e logística.">
+<meta property="og:title" content="Luis Carlos Machado Soares · Análise de Dados | Logística">
+<meta property="og:description" content="Dados que viram decisão na operação. Projetos com SQL, Python, estatística e dashboards interativos.">
+<meta property="og:image" content="https://raw.githubusercontent.com/luiscarlossoarespro-cyber/olist-logistica-entregas/main/graficos/00_dashboard_visao_geral.png">
+<meta name="theme-color" content="#0b1020">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
-:root{color-scheme:dark;--bg:#070b14;--card:#0d1526;--card2:#121c31;--line:rgba(150,175,215,.13);--line2:rgba(150,175,215,.26);--tx:#eef2f8;--tx2:#b0bacb;--tx3:#8391a8;--blue:#6fa8ff;--purple:#b69cff;--green:#5ee0a0;--amber:#f7c25a;--ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--fh:"Inter Tight","Inter",system-ui,sans-serif}
+/* Layout: grade de "células de dados" fixa à esquerda que muda de desenho a cada seção; conteúdo à direita. */
+:root{
+  color-scheme:dark;
+  --bg:#0b1020;--bg2:#0f1629;--card:#121a30;--card2:#16203a;--line:rgba(148,170,210,.13);--line2:rgba(148,170,210,.24);
+  --tx:#e9eef8;--tx2:#a9b5ca;--tx3:#7383a0;
+  --c1:#6fa8ff;--c2:#a58bff;--ok:#4fd1a5;--warn:#f5b85a;
+  --cell0:#16203a;--cell1:#1d3a6b;--cell2:#2f5fae;--cell3:#4f86e6;--cell4:#8fbaff;
+  --ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--fh:"Inter Tight","Inter",system-ui,sans-serif;--fm:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{background:var(--bg);color:var(--tx);font:15px/1.6 var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 520px at 8% -10%,rgba(111,168,255,.12),transparent 60%),radial-gradient(800px 600px at 100% 25%,rgba(182,156,255,.07),transparent 60%)}
 a{color:inherit}
-.w{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
-nav{position:sticky;top:0;z-index:10;background:rgba(7,11,20,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-nav .w{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:13px}
-.lg{display:flex;align-items:center;gap:10px;font:800 15px var(--fh);text-decoration:none}
-.lg i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#06101f;background:linear-gradient(135deg,var(--blue),var(--purple))}
-.nl{display:flex;gap:4px}
-.nl a{text-decoration:none;font-size:13px;font-weight:600;color:var(--tx2);padding:7px 11px;border-radius:9px}
-.nl a:hover{color:var(--tx);background:rgba(255,255,255,.05)}
-.nl a.cta{background:var(--blue);color:#06101f}
-@media(max-width:700px){.nl a:not(.cta){display:none}}
-.kk{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px}
-.kk::before{content:"";width:22px;height:2px;background:currentColor}
-h1{font:800 clamp(34px,5.4vw,60px)/1.05 var(--fh);letter-spacing:-.035em;margin:16px 0 18px;text-wrap:balance;max-width:18ch}
-h1 span{background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
-h2{font:800 clamp(25px,3vw,36px)/1.12 var(--fh);letter-spacing:-.025em;margin:12px 0 10px;text-wrap:balance}
-.lead{font-size:clamp(16px,1.5vw,18.5px);color:var(--tx2);max-width:62ch}
-.sub{color:var(--tx2);max-width:64ch}
-.hero{padding-block:clamp(48px,8vw,100px) 24px}
-.hg{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:center}
-@media(max-width:900px){.hg{grid-template-columns:minmax(0,1fr)}}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.b{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;padding:11px 17px;border-radius:12px;border:1px solid var(--line2);transition:transform .2s,background .2s}
-.b:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
-.b.p{background:linear-gradient(135deg,var(--blue),var(--purple));color:#06101f;border:0}
-.b.s{padding:8px 13px;font-size:13px;border-radius:10px}
-.snap{padding:22px;border-radius:20px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line)}
-.snap h3{font:700 12px var(--fh);letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);margin-bottom:14px}
-.snap dl{display:grid;gap:13px}
-.snap dt{font-size:11.5px;color:var(--tx3);font-weight:600}
-.snap dd{font-size:14px;color:var(--tx);margin-top:2px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:40px}
-@media(max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.st{padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
-.st b{display:block;font:800 clamp(24px,2.6vw,32px)/1 var(--fh);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--c1);outline-offset:3px;border-radius:6px}
+.w{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--c1),var(--c2))}
+nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:13px}
+.lg{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 15px var(--fh)}
+.lg-g{display:grid;grid-template-columns:repeat(3,6px);gap:2px}
+.lg-g i{width:6px;height:6px;border-radius:1.5px;background:var(--cell2)}
+.lg-g i:nth-child(1),.lg-g i:nth-child(5),.lg-g i:nth-child(9){background:var(--cell4)}
+.lg-g i:nth-child(3),.lg-g i:nth-child(7){background:var(--cell3)}
+.nl{display:flex;gap:2px}
+.nl a{text-decoration:none;font-size:13.5px;color:var(--tx2);padding:7px 11px;border-radius:8px;position:relative}
+.nl a:hover,.nl a.on{color:var(--tx)}
+.nl a.on::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;border-radius:2px;background:var(--c1)}
+.nr{display:flex;align-items:center;gap:10px}
+.clock{font:500 12.5px var(--fm);color:var(--tx3);display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid var(--line);border-radius:99px}
+.clock i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(79,209,165,.18)}
+@media(max-width:860px){.nl{display:none}.clock{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 14px var(--ff);padding:11px 18px;border-radius:11px;border:1px solid var(--line2);background:transparent;color:var(--tx);cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.04);border-color:rgba(148,170,210,.4)}
+.btn.p{background:linear-gradient(135deg,var(--c1),var(--c2));color:#0b1020;border:0}
+.btn.s{padding:8px 13px;font-size:13px;border-radius:9px}
+/* hero */
+.hero{padding-block:34px 30px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font:500 12.5px var(--fm);color:var(--tx3)}
+.grid-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--bg2),var(--bg));padding:16px 18px 12px}
+.grid-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--tx2);margin-bottom:10px;flex-wrap:wrap}
+.grid-top b{color:var(--tx)}
+.scale{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--tx3)}
+.scale i{width:10px;height:10px;border-radius:2px}
+#hero-cv{display:block;width:100%;height:auto;cursor:crosshair}
+.grid-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:400 11.5px var(--fm);color:var(--tx3);flex-wrap:wrap}
+.hero-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:end;margin-top:34px}
+@media(max-width:900px){.hero-row{grid-template-columns:minmax(0,1fr);gap:18px}}
+.kk{font:500 12.5px var(--fm);color:var(--c1);letter-spacing:.04em}
+h1{font:800 clamp(40px,6.2vw,78px)/1 var(--fh);letter-spacing:-.04em;text-wrap:balance}
+h1 span{color:var(--c1)}
+.lead{font-size:clamp(16px,1.5vw,18px);color:var(--tx2);max-width:58ch}
+.lead b{color:var(--tx);font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:30px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.st{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
+.st b{display:block;font:800 clamp(26px,3vw,34px)/1 var(--fh);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .st span{display:block;font-size:12.5px;color:var(--tx3);margin-top:8px}
-section{padding-block:clamp(44px,6vw,80px) 0}
-.tg{display:flex;flex-wrap:wrap;gap:6px}
-.tg span{font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:99px;color:var(--tx2);background:rgba(255,255,255,.04);border:1px solid var(--line)}
-.area{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
-.res{list-style:none;padding:0;display:grid;gap:8px;margin:14px 0 16px}
-.res li{display:grid;grid-template-columns:10px minmax(0,1fr);gap:10px;font-size:14px;color:var(--tx2)}
-.res li::before{content:"";width:7px;height:7px;border-radius:50%;margin-top:8px;background:var(--blue)}
-.lb{font:700 11.5px var(--fh);letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin-top:16px}
-.scope{font:600 12.5px var(--ff);color:var(--blue);margin-top:10px}
-.res.rec li::before{background:var(--green)}
-.q{font-size:13.5px;color:var(--tx3);font-style:italic;margin:8px 0 0}
-.q b{font-style:normal;color:var(--tx2)}
-.cap{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0a1120;aspect-ratio:16/9;text-decoration:none;color:inherit}
-.cap img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .6s}
-.met{height:100%;padding:clamp(14px,2.4vw,24px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:center;background:radial-gradient(400px 220px at 90% 0%,rgba(111,168,255,.2),transparent 70%),linear-gradient(160deg,#101a2e,#0a0f1c)}
-.met div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
-.met b{display:block;font:800 clamp(18px,2.2vw,26px)/1 var(--fh)}
-.met span{font-size:11.5px;color:var(--tx3)}
-.feat{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:30px;align-items:center;margin-top:30px;padding:24px;border-radius:24px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line2)}
-@media(max-width:900px){.feat{grid-template-columns:minmax(0,1fr)}}
-.feat h3{font:800 clamp(22px,2.4vw,30px)/1.15 var(--fh);letter-spacing:-.02em;margin:8px 0 0}
-.feat .cap{aspect-ratio:auto;align-self:start;background:#fff}
-.feat .cap img{height:auto;object-fit:contain}
-.flag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;color:#06101f;background:var(--amber);margin-bottom:6px}
-.fl{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-.fl button{font:600 13px var(--ff);color:var(--tx2);background:rgba(255,255,255,.04);border:1px solid var(--line);padding:8px 14px;border-radius:99px;cursor:pointer}
-.fl button[aria-pressed=true]{background:var(--blue);color:#06101f;border-color:var(--blue)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:18px;margin-top:20px}
-.card{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:20px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line);transition:border-color .3s,transform .3s}
-.card:hover{border-color:var(--line2);transform:translateY(-3px)}
-.card h3{font:800 19px/1.2 var(--fh);letter-spacing:-.015em;margin-top:4px}
-.card .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
-.card .res{margin:2px 0 0}
-.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:28px}
-@media(max-width:900px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.fs{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
-.fs b{display:block;font:800 13px var(--fh);color:var(--blue)}
-.fs strong{display:block;font-size:14.5px;margin:6px 0 4px}
-.fs span{font-size:12.5px;color:var(--tx3)}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;margin-top:28px}
-.bx{padding:20px;border-radius:18px;background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line)}
-.bx h3{font:700 15px var(--fh);margin-bottom:4px}
-.bx p.n{font-size:12px;color:var(--tx3);margin-bottom:12px}
-.bx ul{list-style:none;padding:0;display:grid;gap:8px}
-.bx li{font-size:13.5px;color:var(--tx2);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.bx li em{font-style:normal;font-size:11px;font-weight:700;color:var(--green);white-space:nowrap}
-.bx li em.f{color:var(--amber)}
-.tl{display:grid;gap:14px;margin-top:28px}
-.ti{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
-@media(max-width:700px){.ti{grid-template-columns:minmax(0,1fr);gap:4px}}
-.ti time{font:700 13px var(--fh);color:var(--blue)}
-.ti h3{font:700 16px var(--fh)}
-.ti p{font-size:13.5px;color:var(--tx2);margin-top:4px}
-.ct{margin-top:60px;padding:clamp(24px,4vw,44px);border-radius:24px;background:linear-gradient(135deg,rgba(111,168,255,.14),rgba(182,156,255,.1));border:1px solid var(--line2);text-align:center}
-.ct h2{margin-top:0}
-.ct .btns{justify-content:center}
-footer{margin-top:60px;border-top:1px solid var(--line);padding-block:26px 40px;color:var(--tx3);font-size:13px}
-footer .w{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+/* ticker */
+.tk{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;margin-top:34px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tk-in{display:inline-flex;gap:40px;padding-block:11px;animation:tk 60s linear infinite;font:400 13px var(--fm);color:var(--tx3)}
+.tk-in span b{color:var(--c1);font-weight:500}.tk-in span em{font-style:normal;color:var(--tx)}
+.tk:hover .tk-in{animation-play-state:paused}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* seções com grade fixa */
+.lay{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);gap:56px;align-items:start}
+.sec{padding-top:90px}
+@media(max-width:980px){.lay{grid-template-columns:minmax(0,1fr);gap:0}.sec{padding-top:64px}.aside{display:none}}
+.aside{align-self:stretch;padding-top:90px}
+.aside{position:relative}
+.stick{position:sticky;top:96px}
+.pix{border:1px solid var(--line);border-radius:18px;background:var(--bg2);padding:14px}
+#sec-cv{display:block;width:100%;height:auto}
+.commit{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font:400 12.5px var(--fm);display:flex;justify-content:space-between;gap:10px;color:var(--tx3)}
+.commit b{color:var(--ok);font-weight:500}.commit em{font-style:normal;color:var(--tx)}
+.lab{font:500 12.5px var(--fm);color:var(--c1);display:flex;gap:10px;align-items:center}
+.lab code{color:var(--tx3);font-family:var(--fm)}
+h2{font:800 clamp(30px,4vw,50px)/1.05 var(--fh);letter-spacing:-.035em;margin:10px 0 12px;text-wrap:balance}
+.sub{color:var(--tx2);max-width:62ch}
+/* projetos: lista + detalhe */
+.pj{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:14px;margin-top:26px}
+@media(max-width:700px){.pj{grid-template-columns:minmax(0,1fr)}}
+.pj-list{display:flex;flex-direction:column;gap:8px}
+.pj-it{text-align:left;border:1px solid var(--line);background:var(--bg2);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--tx);transition:border-color .2s,background .2s}
+.pj-it b{display:block;font:700 14.5px var(--fh)}
+.pj-it span{display:block;font:400 11.5px var(--fm);color:var(--tx3);margin-top:3px}
+.pj-it[aria-selected=true]{border-color:var(--c1);background:var(--card)}
+.pj-it:hover{border-color:var(--line2)}
+.pj-d{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px 22px;min-width:0}
+.pj-d .cap{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8.5;background:#0a0f1d;margin-bottom:16px;max-width:100%}
+.pj-d .cap img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .6s}
+.pj-d .cap:hover img{transform:scale(1.02)}
+.pj-d h3{font:800 22px/1.2 var(--fh);letter-spacing:-.02em}
+.pj-d .ty{font:400 12px var(--fm);color:var(--c1);margin-top:4px}
+.pj-d p{color:var(--tx2);margin-top:10px}
+.pj-d .q{font-style:italic;color:var(--tx3);font-size:14px}
+.mini{font:500 11px var(--fm);color:var(--tx3);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flow span{font:400 12px var(--fm);padding:5px 9px;border:1px solid var(--line2);border-radius:7px;color:var(--tx);background:rgba(255,255,255,.02)}
+.flow i{font-style:normal;color:var(--c1);font-size:12px}
+.pj-d ul{padding-left:18px;color:var(--tx2);display:grid;gap:5px;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font:400 12px var(--fm);padding:4px 9px;border-radius:7px;background:rgba(111,168,255,.1);color:#bcd3ff}
+.pj-d .btns{margin-top:16px}
+.fade{animation:fd .45s ease}
+@keyframes fd{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* ferramentas */
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:26px}
+@media(max-width:700px){.tools{grid-template-columns:minmax(0,1fr)}}
+.tl{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:18px}
+.tl h3{font:700 16px var(--fh)}
+.tl p{font-size:13px;color:var(--tx3);margin:4px 0 12px}
+.tl .chips span.f{background:rgba(245,184,90,.1);color:#f7d39a}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--tx3);margin-top:14px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+/* método / engenharia */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px}
+@media(max-width:700px){.steps{grid-template-columns:minmax(0,1fr)}}
+.sp{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg2)}
+.sp b{font:500 12px var(--fm);color:var(--c1)}
+.sp strong{display:block;font:700 15px var(--fh);margin:4px 0}
+.sp span{font-size:13px;color:var(--tx3)}
+.eng{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:18px;background:linear-gradient(135deg,rgba(111,168,255,.07),rgba(165,139,255,.05))}
+.eng h3{font:700 16px var(--fh);margin-bottom:8px}
+.eng ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:13.5px;color:var(--tx2)}
+@media(max-width:700px){.eng ul{grid-template-columns:minmax(0,1fr)}}
+.eng li::before{content:"✓";color:var(--ok);margin-right:8px;font-weight:700}
+/* operação */
+.ops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}
+@media(max-width:700px){.ops{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.op{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg2)}
+.op b{display:block;font:800 26px/1 var(--fh);letter-spacing:-.02em}
+.op span{display:block;font-size:12px;color:var(--tx3);margin-top:6px}
+.tline{margin-top:18px;border-left:2px solid var(--line2);display:grid;gap:4px}
+.ti{position:relative;padding:12px 0 12px 22px}
+.ti::before{content:"";position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:3px;background:var(--cell3);box-shadow:0 0 0 4px var(--bg)}
+.ti time{font:500 12px var(--fm);color:var(--c1)}
+.ti h3{font:700 16px var(--fh);margin-top:2px}
+.ti p{font-size:13.5px;color:var(--tx2);margin-top:3px}
+/* contato */
+.ct{margin-top:90px;border:1px solid var(--line2);border-radius:22px;padding:clamp(24px,4vw,44px);background:linear-gradient(135deg,rgba(111,168,255,.1),rgba(165,139,255,.07))}
+.ct h2{margin-top:6px}
+.mail{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--fm);border:1px dashed var(--line2);padding:8px 12px;border-radius:9px;user-select:all;color:var(--tx)}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-block:24px 40px}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:400 12.5px var(--fm);color:var(--tx3)}
+/* revelação na rolagem (estado de repouso visível) */
+.rv{opacity:.35;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,.84,.3,1),transform .7s cubic-bezier(.16,.84,.3,1)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.tk-in{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav><div class="w"><a class="lg" href="#topo"><i>LC</i>Luis Carlos · Dados</a><div class="nl"><a href="#projetos">Projetos</a><a href="#metodo">Método</a><a href="#competencias">Competências</a><a href="#trajetoria">Trajetória</a><a class="cta" href="#contato">Contato</a></div></div></nav>
+<div id="bar"></div>
+<nav><div class="w">
+  <a class="lg" href="#topo"><span class="lg-g" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>luis carlos</a>
+  <div class="nl" id="nl"><a href="#projetos">Projetos</a><a href="#ferramentas">Ferramentas</a><a href="#metodo">Método</a><a href="#operacao">Operação</a><a href="#contato">Contato</a></div>
+  <div class="nr"><span class="clock"><i></i>Porto Alegre · <span id="hora">--:--</span></span><a class="btn s" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+</div></nav>
 
 <header class="hero w" id="topo">
-<div class="hg">
-<div>
-<div class="kk">Analista de Dados Jr · Logística e Operações</div>
-<h1>Analista de dados que conhece a <span>operação por dentro</span>.</h1>
-<p class="lead">Sou <b>Luis Carlos Machado Soares</b>. São <b>mais de 16 anos em logística</b>, de conferência de cargas a coordenação de equipe. Hoje uso SQL, Python, Excel e dashboards para mostrar onde o processo perde tempo e dinheiro, e o que fazer a respeito.</p>
-<div class="btns"><a class="b p" href="#projetos">Ver projetos ↓</a><a class="b" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a></div>
-</div>
-<aside class="snap" aria-label="Resumo profissional">
-<h3>Resumo em 10 segundos</h3>
-<dl>
-<dt>Objetivo</dt><dd>Analista de Dados Jr · Analista de Logística</dd>
-<dt>Diferencial</dt><dd>Entende o dado porque viveu a operação: estoque, expedição, inventário e liderança de equipe</dd>
-<dt>Projeto em destaque</dt><dd>Análise de 96 mil entregas: onde e por que os pedidos atrasam</dd>
-<dt>Local</dt><dd>Porto Alegre/RS</dd>
-</dl>
-</aside>
-</div>
-<div class="stats">
-<div class="st"><b id="n-anos">+16</b><span>anos em logística e operações</span></div>
-<div class="st"><b id="n-proj">4</b><span>projetos de dados publicados</span></div>
-<div class="st"><b>96 mil</b><span>pedidos analisados no projeto principal</span></div>
-<div class="st"><b>+80</b><span>colaboradores treinados na operação</span></div>
-</div>
+  <div class="meta"><span>análise de dados · logística e operações</span><span>github.com/luiscarlossoarespro-cyber</span></div>
+  <div class="grid-card">
+    <div class="grid-top"><span><b id="h-ped">96.432</b> entregas analisadas no projeto principal</span><span class="scale">no prazo <i style="background:var(--cell0)"></i><i style="background:var(--cell1)"></i><i style="background:var(--cell2)"></i><i style="background:var(--cell3)"></i><i style="background:var(--cell4)"></i> atraso</span></div>
+    <canvas id="hero-cv" aria-label="Grade de células de dados formando o nome Luis Carlos"></canvas>
+    <div class="grid-foot"><span>cada célula é um recorte de dados · passe o mouse para destacar</span><span>role para explorar ↓</span></div>
+  </div>
+  <div class="hero-row">
+    <div><div class="kk">// Analista de dados · logística</div><h1>Dados que viram <span>decisão</span> na operação.</h1></div>
+    <div>
+      <p class="lead">Sou <b>Luis Carlos Machado Soares</b>. São <b>19 anos de carreira em operações e logística</b>, de conferência de cargas a líder de equipe. Hoje uso <b>SQL, Python, estatística e dashboards</b> para mostrar onde a operação perde tempo e dinheiro, e o que fazer a respeito.</p>
+      <div class="btns"><a class="btn p" href="#projetos">Ver projetos ↓</a><a class="btn" href="https://luiscarlossoarespro-cyber.github.io/olist-logistica-entregas/dashboard/" target="_blank" rel="noopener">Dashboard ao vivo ↗</a><a class="btn" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="st"><b data-n="19">19</b><span>anos em operações e logística</span></div>
+    <div class="st"><b id="n-proj" data-n="4">4</b><span>projetos de dados publicados</span></div>
+    <div class="st"><b id="n-repos" data-n="6">6</b><span>repositórios públicos no GitHub</span></div>
+    <div class="st"><b data-n="80" data-p="+">+80</b><span>colaboradores treinados na operação</span></div>
+  </div>
+  <div class="tk" aria-label="Últimas atualizações no GitHub"><div class="tk-in" id="tk"></div></div>
 </header>
 
-<section id="projetos" class="w">
-<div class="kk">Projetos</div>
-<h2>Cada projeto responde a uma pergunta de negócio</h2>
-<p class="sub">Problema, dados, indicadores e recomendação. O projeto em destaque é o mais ligado à minha área: logística.</p>
-<div id="destaque"></div>
-<div class="fl" id="filtros" role="group" aria-label="Filtrar projetos por área"></div>
-<div class="grid" id="grade"></div>
-<noscript><p class="sub" style="margin-top:20px">Ative o JavaScript para ver os projetos, ou acesse <a href="https://github.com/luiscarlossoarespro-cyber">meu GitHub</a>.</p></noscript>
-</section>
+<main class="w">
+  <div class="lay">
+  <aside class="aside"><div class="stick"><div class="pix"><canvas id="sec-cv" aria-hidden="true"></canvas></div><div class="commit"><span id="cm-msg"><b>SELECT</b> <em>projetos</em></span><span id="cm-n">01 / 05</span></div></div></aside>
+  <div class="col">
+  <div class="sec" id="projetos">
+    <div>
+      <div class="lab rv">01 / projetos <code>SELECT * FROM projetos ORDER BY impacto DESC;</code></div>
+      <h2 class="rv">Perguntas de negócio, respondidas com dados</h2>
+      <p class="sub rv">Cada projeto parte de uma pergunta real e termina em uma recomendação. O principal é da minha área: logística.</p>
+      <div class="pj rv"><div class="pj-list" id="pj-list" role="tablist" aria-label="Projetos"></div><article class="pj-d" id="pj-d" role="tabpanel"></article></div>
+    </div>
+  </div>
 
-<section id="metodo" class="w">
-<div class="kk">Método</div>
-<h2>Como eu trabalho</h2>
-<p class="sub">O mesmo raciocínio de quem confere uma carga: nada passa sem checagem, e todo número precisa levar a uma ação.</p>
-<div class="flow">
-<div class="fs"><b>01</b><strong>Problema</strong><span>Qual decisão precisa ser tomada?</span></div>
-<div class="fs"><b>02</b><strong>Perguntas</strong><span>O que os dados precisam responder</span></div>
-<div class="fs"><b>03</b><strong>Dados</strong><span>Coleta, limpeza e validação</span></div>
-<div class="fs"><b>04</b><strong>Indicadores</strong><span>KPIs com definição clara</span></div>
-<div class="fs"><b>05</b><strong>Visualização</strong><span>Gráfico que se entende sem explicação</span></div>
-<div class="fs"><b>06</b><strong>Recomendação</strong><span>Ação, limites e próximos passos</span></div>
-</div>
-</section>
+  <div class="sec" id="ferramentas">
+    <div>
+      <div class="lab rv">02 / ferramentas <code>SELECT ferramenta, nivel FROM stack;</code></div>
+      <h2 class="rv">Com o que eu trabalho</h2>
+      <p class="sub rv">Separado entre o que já uso nos projetos publicados e o que ainda estou estudando.</p>
+      <div class="tools">
+        <div class="tl rv"><h3>Dados e análise</h3><p>Da base bruta à tabela pronta para decisão</p><div class="chips"><span>SQL (DuckDB)</span><span>Python</span><span>Pandas</span><span>Excel</span><span>Google Sheets</span><span class="f">Excel avançado</span></div></div>
+        <div class="tl rv"><h3>Estatística e modelos</h3><p>Para separar sinal de ruído</p><div class="chips"><span>Intervalo de confiança</span><span>Regressão logística</span><span>Testes de hipótese</span><span>scikit-learn</span><span>statsmodels</span></div></div>
+        <div class="tl rv"><h3>Visualização</h3><p>Gráfico que se entende sem explicação</p><div class="chips"><span>Dashboards web</span><span>Matplotlib</span><span>Plotly</span><span>Tableau Public</span><span class="f">Power BI</span></div></div>
+        <div class="tl rv"><h3>Operação e logística</h3><p>O contexto que dá sentido aos números</p><div class="chips"><span>Conferência e inventário</span><span>KPIs de operação</span><span>PDL e WMS</span><span>Kaizen</span><span>Liderança de equipe</span></div></div>
+        <div class="tl rv"><h3>Produtividade e IA</h3><p>Uso prático no dia a dia</p><div class="chips"><span>IA generativa (Claude)</span><span>Git e GitHub</span><span>GitHub Pages</span><span class="f">Scrum</span></div></div>
+        <div class="tl rv"><h3>Formação em andamento</h3><p>Base acadêmica</p><div class="chips"><span>Administração de Empresas</span><span>Processos Gerenciais</span><span>Técnico em Análise de Dados</span></div></div>
+      </div>
+      <div class="legend rv"><span style="--c:rgba(111,168,255,.5)">em uso nos projetos</span><span style="--c:rgba(245,184,90,.5)">em formação</span></div>
+    </div>
+  </div>
 
-<section id="competencias" class="w">
-<div class="kk">Competências</div>
-<h2>O que uso e em que nível</h2>
-<p class="sub">Separado entre o que já aplico nos projetos e o que ainda estou estudando.</p>
-<div class="skills">
-<div class="bx"><h3>Análise e dados</h3><p class="n">Base dos projetos publicados</p><ul><li>Excel e Google Sheets<em>em uso</em></li><li>SQL (DuckDB)<em>em uso</em></li><li>Python (Pandas)<em>em uso</em></li><li>Excel avançado<em class="f">em formação</em></li></ul></div>
-<div class="bx"><h3>Visualização</h3><p class="n">Dashboards e gráficos</p><ul><li>Dashboards em HTML, CSS e JS<em>em uso</em></li><li>Plotly e Matplotlib<em>em uso</em></li><li>Tableau Public<em>em uso</em></li><li>Power BI<em class="f">em formação</em></li></ul></div>
-<div class="bx"><h3>Operação e logística</h3><p class="n">Experiência de chão de fábrica</p><ul><li>Conferência e inventário<em>16+ anos</em></li><li>Indicadores e melhoria contínua<em>em uso</em></li><li>PDL e WMS<em>em uso</em></li><li>Liderança de equipe<em>em uso</em></li></ul></div>
-<div class="bx"><h3>Produtividade e IA</h3><p class="n">Uso prático, no dia a dia</p><ul><li>IA generativa (Claude)<em>em uso</em></li><li>Scrum e gestão ágil<em>em formação</em></li><li>Kaizen<em>em uso</em></li></ul></div>
-</div>
-</section>
+  <div class="sec" id="metodo">
+    <div>
+      <div class="lab rv">03 / método <code>WITH pergunta AS (...) SELECT decisao;</code></div>
+      <h2 class="rv">Como eu resolvo um problema com dados</h2>
+      <p class="sub rv">O mesmo raciocínio de quem confere uma carga: nada passa sem checagem, e todo número precisa levar a uma ação.</p>
+      <div class="steps">
+        <div class="sp rv"><b>01</b><strong>Pergunta de negócio</strong><span>Qual decisão precisa ser tomada?</span></div>
+        <div class="sp rv"><b>02</b><strong>Auditoria dos dados</strong><span>Nulos, duplicados, datas impossíveis</span></div>
+        <div class="sp rv"><b>03</b><strong>Base analítica</strong><span>SQL com uma linha por fato analisado</span></div>
+        <div class="sp rv"><b>04</b><strong>Análise</strong><span>Indicadores com margem de erro e controles</span></div>
+        <div class="sp rv"><b>05</b><strong>Comunicação</strong><span>Dashboard e relatório para quem decide</span></div>
+        <div class="sp rv"><b>06</b><strong>Recomendação</strong><span>Ação, impacto estimado e limites</span></div>
+      </div>
+      <div class="eng rv"><h3>Boas práticas de engenharia de dados que aplico</h3><ul>
+        <li>Código versionado no GitHub, em etapas numeradas</li>
+        <li>Um comando refaz o projeto inteiro do zero</li>
+        <li>Auditoria de qualidade antes de qualquer número</li>
+        <li>Números do relatório conferidos por script</li>
+        <li>Validação temporal no modelo (sem "vazar" o futuro)</li>
+        <li>Documentação: relatório técnico e dicionário de dados</li>
+      </ul></div>
+    </div>
+  </div>
 
-<section id="trajetoria" class="w">
-<div class="kk">Trajetória</div>
-<h2>Operação na prática, dados como próximo passo</h2>
-<div class="tl">
-<div class="ti"><time>out/2026 – atual</time><div><h3>Conferente · BBM Logística</h3><p>Conferência de cargas e descargas, separação de produtos e uso de PDL.</p></div></div>
-<div class="ti"><time>2021 – 2026</time><div><h3>Coca-Cola FEMSA · de Ajudante Operacional a Conferente</h3><p>Mais de 100 paletes conferidos por dia e 29 caminhões carregados por dia, chegando a 40 no verão. Líder informal de equipes de 20 a 50 pessoas. Mais de 80 colaboradores treinados. Inventário diário do pick e inventário geral quinzenal.</p></div></div>
-<div class="ti"><time>2007 – 2021</time><div><h3>Operações, estoque e atendimento</h3><p>Almoxarifado (Zaffari), coleta urbana (DMLU), manutenção e serviços gerais, promoção de vendas (RBS/Zero Hora).</p></div></div>
-<div class="ti"><time>Em andamento</time><div><h3>Formação</h3><p>Administração de Empresas, Processos Gerenciais e Técnico em Análise de Dados. Cursos de Excel para Análise de Dados, Scrum e Intensivão de Claude.</p></div></div>
-</div>
-</section>
+  <div class="sec" id="operacao">
+    <div>
+      <div class="lab rv">04 / operação <code>SELECT * FROM trajetoria ORDER BY data DESC;</code></div>
+      <h2 class="rv">Operação na prática, dados como próximo passo</h2>
+      <p class="sub rv">Antes de analisar dados de logística, eu vivi a operação que os gera.</p>
+      <div class="ops">
+        <div class="op rv"><b>100+</b><span>paletes conferidos por dia</span></div>
+        <div class="op rv"><b>29</b><span>caminhões carregados por dia, até 40 no verão</span></div>
+        <div class="op rv"><b>50</b><span>pessoas coordenadas como líder informal</span></div>
+        <div class="op rv"><b>+80</b><span>colaboradores treinados</span></div>
+      </div>
+      <div class="tline">
+        <div class="ti rv"><time>out/2026 – atual</time><h3>Conferente · BBM Logística</h3><p>Conferência de cargas e descargas, separação de produtos e uso de PDL (coletor de dados).</p></div>
+        <div class="ti rv"><time>dez/2021 – jun/2026</time><h3>Coca-Cola FEMSA · de Ajudante Operacional a Conferente</h3><p>Ajudante Operacional, Assistente Geral, Assistente de Operações e Conferente. Inventário diário do pick e geral quinzenal, alinhamento da montagem do pick e reuniões de melhoria contínua com a equipe.</p></div>
+        <div class="ti rv"><time>2007 – 2021</time><h3>Estoque, operações e vendas</h3><p>Almoxarifado (Zaffari), coleta urbana (DMLU), manutenção e serviços gerais (Garagem Paineira) e promoção de vendas (RBS/Zero Hora).</p></div>
+      </div>
+    </div>
+  </div>
 
-<section id="contato" class="w">
-<div class="ct">
-<div class="kk" style="justify-content:center">Contato</div>
-<h2>Vamos conversar sobre dados na sua operação?</h2>
-<p class="sub" style="margin-inline:auto">Estou construindo a transição de logística para análise de dados. Fale comigo pelo LinkedIn ou por e-mail.</p>
-<div class="btns"><a class="b p" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="b" href="mailto:luiscarlos.soarespro@gmail.com">E-mail</a><a class="b" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a></div>
-</div>
-</section>
-
-<footer><div class="w"><span>© 2026 Luis Carlos Machado Soares · Porto Alegre/RS</span><span>Dados do projeto principal: Olist (CC BY-NC-SA 4.0)</span></div></footer>
+  </div></div>
+  <section class="ct rv" id="contato">
+    <div class="lab">05 / contato <code>INSERT INTO conversas VALUES ('você');</code></div>
+    <h2>Vamos conversar sobre dados na sua operação?</h2>
+    <p class="sub">Busco oportunidades em análise de dados e logística. Se a sua empresa gera dados e precisa de alguém que entenda o processo por trás deles, fale comigo.</p>
+    <div class="btns"><a class="btn p" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a><span class="mail" title="Selecione para copiar">luiscarlos.soarespro@gmail.com</span></div>
+  </section>
+</main>
+<footer><div class="w"><span>© 2026 Luis Carlos Machado Soares · Porto Alegre/RS</span><span>feito com dados reais e muitos commits</span></div></footer>
 
 <script src="projetos.js"></script>
 <script>
 (function(){
-var P=window.PROJETOS||[];
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function cover(p){
-  var l=p.links&&p.links[0]?p.links[0].u:"#";
-  var inner;
-  if(p.capa){inner='<img src="'+esc(p.capa)+'" alt="Imagem do projeto: '+esc(p.titulo)+'" loading="lazy">'}
-  else{inner='<div class="met" role="img" aria-label="Resumo do projeto">'+(p.metricas||[]).map(function(m){return'<div><b>'+esc(m.v)+'</b><span>'+esc(m.l)+'</span></div>'}).join("")+'</div>'}
-  return'<a class="cap" href="'+esc(l)+'" target="_blank" rel="noopener">'+inner+'</a>';
-}
-function btns(p,small){return(p.links||[]).map(function(k){return'<a class="b'+(k.p?' p':'')+(small?' s':'')+'" href="'+esc(k.u)+'" target="_blank" rel="noopener">'+esc(k.r)+' ↗</a>'}).join("")}
-function tags(p){return'<div class="tg">'+(p.ferramentas||[]).map(function(t){return'<span>'+esc(t)+'</span>'}).join("")+'</div>'}
-function res(p){return'<ul class="res">'+(p.resultados||[]).map(function(r){return'<li>'+esc(r)+'</li>'}).join("")+'</ul>'}
-var d=P.filter(function(p){return p.destaque})[0];
-if(d){document.getElementById("destaque").innerHTML='<article class="feat">'+cover(d)+'<div><span class="flag">Projeto em destaque</span><div class="area">'+esc(d.area)+'</div><h3>'+esc(d.titulo)+'</h3><p class="q"><b>Pergunta:</b> '+esc(d.pergunta)+'</p>'+(d.escopo?'<p class="scope">'+esc(d.escopo)+'</p>':'')+'<h4 class="lb">O que os dados mostram</h4>'+res(d)+(d.recomendacoes?'<h4 class="lb">O que eu recomendaria</h4><ul class="res rec">'+d.recomendacoes.map(function(r){return'<li>'+esc(r)+'</li>'}).join("")+'</ul>':'')+tags(d)+'<div class="btns" style="margin-top:18px">'+btns(d,false)+'</div></div></article>'}
-var rest=P.filter(function(p){return!p.destaque});
-var areas=[];rest.forEach(function(p){if(areas.indexOf(p.area)<0)areas.push(p.area)});
-var grade=document.getElementById("grade"),fl=document.getElementById("filtros"),atual="Todos";
-function draw(){
-  grade.innerHTML=rest.filter(function(p){return atual==="Todos"||p.area===atual}).map(function(p){
-    return'<article class="card">'+cover(p)+'<div><div class="area">'+esc(p.area)+'</div><h3>'+esc(p.titulo)+'</h3><p class="q"><b>Pergunta:</b> '+esc(p.pergunta)+'</p></div>'+res(p)+tags(p)+'<div class="links">'+btns(p,true)+'</div></article>'}).join("");
-  Array.prototype.forEach.call(fl.children,function(b){b.setAttribute("aria-pressed",b.getAttribute("data-a")===atual)});
-}
-if(areas.length>1){
-  fl.innerHTML=["Todos"].concat(areas).map(function(a){return'<button type="button" data-a="'+esc(a)+'">'+esc(a)+'</button>'}).join("");
-  fl.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(a){atual=a;draw()}});
-}else{fl.style.display="none"}
-draw();
-document.getElementById("n-proj").textContent=P.length;
-var els=document.querySelectorAll("section .kk,section h2,.feat,.fs,.bx,.ti,.ct");
-els.forEach(function(e){e.classList.add("rv")});
-function vis(){els.forEach(function(e){if(e.classList.contains("in"))return;var r=e.getBoundingClientRect();if(r.top<innerHeight*0.96)e.classList.add("in")})}
-addEventListener("scroll",vis,{passive:true});addEventListener("load",vis);addEventListener("resize",vis);setTimeout(vis,100);setTimeout(vis,900);
+"use strict";
+const RED=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $=id=>document.getElementById(id);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const CELL=[css("--cell0"),css("--cell1"),css("--cell2"),css("--cell3"),css("--cell4")];
+
+/* relógio de Porto Alegre */
+function hora(){try{$("hora").textContent=new Intl.DateTimeFormat("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}).format(new Date())}catch(e){}}
+hora();setInterval(hora,30000);
+
+/* barra de progresso + menu ativo */
+const secs=["projetos","ferramentas","metodo","operacao","contato"];
+addEventListener("scroll",()=>{const h=document.documentElement;$("bar").style.width=(100*scrollY/Math.max(1,h.scrollHeight-innerHeight))+"%";
+  let at="";secs.forEach(s=>{const e=$(s);if(e&&e.getBoundingClientRect().top<innerHeight*.4)at=s});
+  document.querySelectorAll("#nl a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+at))},{passive:true});
+
+/* ---------- fonte 5x7 para desenhar o nome na grade ---------- */
+const F={A:["01110","10001","10001","11111","10001","10001","10001"],C:["01111","10000","10000","10000","10000","10000","01111"],I:["11111","00100","00100","00100","00100","00100","11111"],L:["10000","10000","10000","10000","10000","10000","11111"],O:["01110","10001","10001","10001","10001","10001","01110"],R:["11110","10001","10001","11110","10100","10010","10001"],S:["01111","10000","10000","01110","00001","00001","11110"],U:["10001","10001","10001","10001","10001","10001","01110"]," ":["000","000","000","000","000","000","000"]};
+function texto(t){const cols=[];for(const ch of t){const g=F[ch]||F[" "];for(let x=0;x<g[0].length;x++)cols.push(g.map(r=>r[x]==="1"));cols.push(new Array(7).fill(false))}return cols}
+
+/* grade do topo: o nome em células, com ruído de "atividade" e destaque no mouse */
+const hc=$("hero-cv"),hx=hc.getContext("2d");
+const TXT=texto("LUIS CARLOS");const HC=Math.max(TXT.length+8,64),HR=13,OX=Math.floor((HC-TXT.length)/2),OY=3;
+let hv=[],ht=[],mouse={x:-99,y:-99};
+for(let i=0;i<HC*HR;i++){hv.push(0);ht.push(0)}
+function alvoHero(){for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];
+  ht[y*HC+x]=on?(3+Math.random()*1.2):(Math.random()<.16?Math.random()*1.8:0)}}
+alvoHero();
+function tamHero(){const w=hc.parentElement.clientWidth-36;const cs=Math.max(6,Math.floor(w/HC));hc.width=cs*HC*devicePixelRatio;hc.height=cs*HR*devicePixelRatio;hc.style.height=(cs*HR)+"px";hc._cs=cs}
+tamHero();addEventListener("resize",tamHero);
+hc.addEventListener("mousemove",e=>{const r=hc.getBoundingClientRect(),cs=r.width/HC;mouse={x:Math.floor((e.clientX-r.left)/cs),y:Math.floor((e.clientY-r.top)/cs)}});
+hc.addEventListener("mouseleave",()=>mouse={x:-99,y:-99});
+hc.addEventListener("click",()=>alvoHero());
+let first=!RED;
+function drawHero(){const cs=hc.width/HC,g=cs*.18,r=cs*.22;hx.clearRect(0,0,hc.width,hc.height);
+  for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const i=y*HC+x;let t=ht[i];const d=Math.hypot(x-mouse.x,y-mouse.y);if(d<2.2)t=Math.max(t,4-d);
+    hv[i]+=(t-hv[i])*(first?.06:.18);const lv=Math.max(0,Math.min(4,Math.round(hv[i])));
+    hx.fillStyle=CELL[lv];const px=x*cs+g/2,py=y*cs+g/2,s=cs-g;hx.beginPath();if(hx.roundRect)hx.roundRect(px,py,s,s,r);else hx.rect(px,py,s,s);hx.fill()}
+  requestAnimationFrame(drawHero)}
+if(RED){for(let i=0;i<hv.length;i++)hv[i]=ht[i]}
+requestAnimationFrame(drawHero);setTimeout(()=>first=false,1800);
+if(!RED)setInterval(()=>{for(let k=0;k<6;k++){const x=Math.floor(Math.random()*HC),y=Math.floor(Math.random()*HR),tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];if(!on)ht[y*HC+x]=Math.random()<.5?0:Math.random()*2}},700);
+
+/* ---------- grade lateral que muda de desenho por seção ---------- */
+const SC=28,SR=28,sc=$("sec-cv"),sx=sc.getContext("2d");
+const P={
+ projetos:["............................","............................","........................##..","........................##..","....................##..##..","....................##..##..","................##..##..##..","................##..##..##..","............##..##..##..##..","............##..##..##..##..","........##..##..##..##..##..","........##..##..##..##..##..","....##..##..##..##..##..##..","....##..##..##..##..##..##..","....##..##..##..##..##..##..","...#######################..","............................","..........##########........","..........#........#........","..........#.SELECT.#........","..........#........#........","..........##########........","............................","............................","............................","............................","............................","............................"],
+ ferramentas:["............................","............................","..........########..........","........###......###........",".......##..........##.......","......##....####....##......","......#....##..##....#......","......#....#....#....#......","......#....##..##....#......","......##....####....##......",".......##..........##.......","........###......###........","..........#########.........","..................###.......","...................###......","....................###.....",".....................###....","......................###...","............................","............................","....###.....###.....###.....","....###.....###.....###.....","............................","............................","............................","............................","............................","............................"],
+ metodo:["............................","............................","...######...................","...#....#...................","...######...................","......#.....................","......#.....................","......####.....######.......",".........#.....#....#.......",".........######......#......","...............######.......","....................#.......","....................#.......","..........######....#.......","..........#....#.####.......","..........######............",".............#..............",".............#..............","...........#####............","..........#.....#...........","..........#..✓..#...........","..........#.....#...........","...........#####............","............................","............................","............................","............................","............................"],
+ operacao:["............................","............................","............................","............................","...............#######......","...............#.....##.....","...............#.....#.#....","...############......#..#...","...#..........#......####...","...#..........#.........#...","...#..........#.........#...","...#..........#.........#...","...#..........###########...","...##########################","....###..............###....","...#####............#####...","...#####............#####...","....###..............###....","............................","............................","...#####....#####....#####..","...#...#....#...#....#...#..","...#####....#####....#####..","............................","............................","............................","............................","............................"],
+ contato:["............................","............................","............................","....####################....","....##................##....","....#.#..............#.#....","....#..#............#..#....","....#...#..........#...#....","....#....#........#....#....","....#.....#......#.....#....","....#......######......#....","....#..................#....","....#..................#....","....####################....","............................","............................","............................","..........#......#..........","..........#......#..........","...........######...........","............................","............................","............................","............................","............................","............................","............................","............................"]
+};
+const MSG={projetos:["SELECT","projetos","01 / 05"],ferramentas:["SELECT","ferramentas","02 / 05"],metodo:["WITH","metodo","03 / 05"],operacao:["SELECT","trajetoria","04 / 05"],contato:["INSERT","conversas","05 / 05"]};
+let sv=new Array(SC*SR).fill(0),st=new Array(SC*SR).fill(0),atual="";
+function alvoSec(nome){atual=nome;const p=P[nome];for(let y=0;y<SR;y++)for(let x=0;x<SC;x++){const ch=(p[y]||"")[x]||".";st[y*SC+x]=ch==="."?(Math.random()<.05?1:0):(ch==="#"?3+Math.random():4)}
+  const m=MSG[nome];$("cm-msg").innerHTML=`<b>${m[0]}</b> <em>${m[1]}</em>`;$("cm-n").textContent=m[2]}
+function tamSec(){const w=sc.parentElement.clientWidth-28;const cs=Math.floor(w/SC);sc.width=cs*SC*devicePixelRatio;sc.height=cs*SR*devicePixelRatio;sc.style.height=(cs*SR)+"px"}
+tamSec();addEventListener("resize",tamSec);alvoSec("projetos");
+function drawSec(){const cs=sc.width/SC,g=cs*.16,r=cs*.2;sx.clearRect(0,0,sc.width,sc.height);
+  for(let i=0;i<SC*SR;i++){sv[i]+=(st[i]-sv[i])*(RED?1:.09);const lv=Math.max(0,Math.min(4,Math.round(sv[i])));sx.fillStyle=CELL[lv];
+    const x=i%SC,y=Math.floor(i/SC),px=x*cs+g/2,py=y*cs+g/2,s=cs-g;sx.beginPath();if(sx.roundRect)sx.roundRect(px,py,s,s,r);else sx.rect(px,py,s,s);sx.fill()}
+  requestAnimationFrame(drawSec)}
+requestAnimationFrame(drawSec);
+addEventListener("scroll",()=>{let at="projetos";secs.forEach(s=>{const e=$(s);if(e&&e.getBoundingClientRect().top<innerHeight*.5)at=s});if(at!==atual)alvoSec(at)},{passive:true});
+
+/* ---------- projetos: lista + detalhe ---------- */
+const PJ=window.PROJETOS||[];
+$("n-proj").textContent=PJ.length;$("n-proj").dataset.n=PJ.length;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("pj-list").innerHTML=PJ.map((p,i)=>`<button class="pj-it" role="tab" type="button" data-i="${i}" aria-selected="${i===0}"><b>${esc(p.titulo)}</b><span>${esc(p.area)} · ${esc(p.tipo)}</span></button>`).join("");
+function mostrar(i){const p=PJ[i];const d=$("pj-d");d.classList.remove("fade");void d.offsetWidth;d.classList.add("fade");
+  d.innerHTML=`<a class="cap" href="${esc(p.links[0].u)}" target="_blank" rel="noopener"><img src="${esc(p.capa)}" alt="Tela do projeto ${esc(p.titulo)}" loading="lazy"></a>
+  <h3>${esc(p.titulo)}</h3><div class="ty">${esc(p.tipo)}</div><p>${esc(p.resumo)}</p><p class="q">Pergunta: ${esc(p.pergunta)}</p>
+  <div class="mini">caminho dos dados</div><div class="flow">${p.fluxo.map(f=>`<span>${esc(f)}</span>`).join('<i>→</i>')}</div>
+  <div class="mini">destaques</div><ul>${p.destaques.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+  <div class="mini">ferramentas</div><div class="chips">${p.ferramentas.map(x=>`<span>${esc(x)}</span>`).join("")}</div>
+  <div class="btns">${p.links.map(k=>`<a class="btn s${k.p?" p":""}" href="${esc(k.u)}" target="_blank" rel="noopener">${esc(k.r)} ↗</a>`).join("")}</div>`;
+  document.querySelectorAll(".pj-it").forEach(b=>b.setAttribute("aria-selected",+b.dataset.i===i))}
+$("pj-list").addEventListener("click",e=>{const b=e.target.closest(".pj-it");if(b)mostrar(+b.dataset.i)});
+mostrar(0);
+
+/* ---------- últimas atualizações do GitHub (ao vivo, com reserva fixa) ---------- */
+const RESERVA=[["olist-logistica-entregas","Análise de atrasos de entrega no e-commerce brasileiro (Olist) com SQL e Python"],["luiscarlossoarespro-cyber.github.io","Portfólio de Análise de Dados"],["erp-financeiro-pessoal","Dashboard estratégico de finanças pessoais"],["analise-vendas-online","Dashboard interativo de vendas (Aurora Comercial)"],["analise-catalogo-netflix","Dashboard no Tableau Public sobre o catálogo da Netflix"]];
+function ticker(itens){const h=itens.map(([n,d,dt])=>`<span>${dt?`<b>${dt}</b> `:""}push(<em>${esc(n)}</em>): ${esc(d||"")}</span>`).join("");$("tk").innerHTML=h+h}
+ticker(RESERVA);
+fetch("https://api.github.com/users/luiscarlossoarespro-cyber/repos?sort=pushed&per_page=12").then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
+  const l=rs.filter(r=>!r.fork&&r.name!=="luiscarlossoarespro-cyber");if(!l.length)return;
+  $("n-repos").textContent=rs.filter(r=>!r.fork).length;
+  ticker(l.map(r=>[r.name,r.description,new Date(r.pushed_at).toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}).replace(".","")]))}).catch(()=>{});
+
+/* ---------- revelação e contadores ---------- */
+const els=document.querySelectorAll(".rv");
+if(!("IntersectionObserver" in window)||RED){els.forEach(e=>e.classList.add("in"))}else{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -5% 0px"});
+  els.forEach(e=>io.observe(e))}
+function contar(b){if(RED)return;const n=+b.dataset.n,p=b.dataset.p||"",t0=performance.now();(function f(){const k=Math.max(0,Math.min(1,(performance.now()-t0)/1200)),e=1-Math.pow(1-k,4);b.textContent=p+Math.round(n*e);if(k<1)requestAnimationFrame(f)})()}
+setTimeout(()=>document.querySelectorAll(".st b[data-n]").forEach(contar),250);
 })();
 </script>
 </body>

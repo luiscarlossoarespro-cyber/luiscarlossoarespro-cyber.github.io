@@ -1,23 +1,12 @@
 /*
-  ============================================================
-  PROJETOS DO PORTFÓLIO — É AQUI QUE VOCÊ ADICIONA UM NOVO
-  ============================================================
-  Para publicar um projeto novo: copie um bloco abaixo, cole no
-  TOPO da lista (o mais novo vem primeiro) e troque os textos.
-  O site monta o card, o filtro e o contador sozinho.
+  PROJETOS DO PORTFÓLIO — para publicar um projeto novo, copie um bloco,
+  cole no TOPO da lista e troque os textos. O site monta tudo sozinho.
 
   Campos:
-    id          nome curto, sem espaço
-    destaque    true = aparece grande no topo (use em UM projeto)
-    area        "Logística", "Finanças", "Vendas"... (cria o filtro)
-    ano         ano da publicação
-    titulo      nome do projeto
-    pergunta    a pergunta de negócio que o projeto responde
-    resultados  3 achados com número real (nada inventado)
-    ferramentas lista de ferramentas usadas
-    capa        endereço de uma imagem (ou deixe "" para usar metricas)
-    metricas    até 4 números para a capa, se não houver imagem
-    links       botões: { r: "texto", u: "endereço", p: true } (p = principal)
+    id, destaque (true em UM projeto), area, ano, titulo, tipo (subtítulo curto),
+    resumo (2 frases), pergunta (a pergunta de negócio),
+    fluxo (etapas do caminho dos dados), destaques (3 achados com número real),
+    ferramentas, capa (imagem), links [{ r: texto, u: endereço, p: principal }]
 */
 window.PROJETOS = [
   {
@@ -25,24 +14,22 @@ window.PROJETOS = [
     destaque: true,
     area: "Logística",
     ano: 2026,
-    titulo: "Entregas no e-commerce: onde e por que os pedidos atrasam",
-    pergunta: "Quanto os pedidos atrasam, em que etapa o tempo se perde e quanto isso custa em satisfação do cliente?",
-    resultados: [
-      "8,1% dos 96.455 pedidos entregues chegaram depois do prazo prometido",
-      "O gargalo é a transportadora: 25,7 dias nos pedidos atrasados contra 7,9 nos pedidos no prazo",
-      "Com mais de 7 dias de atraso, a nota do cliente cai para 1,7 (a média geral é 4,16)"
+    titulo: "Entregas Olist: onde e por que os pedidos atrasam",
+    tipo: "SQL · Python · estatística · modelo · dashboard",
+    resumo: "Análise de 96 mil entregas reais do e-commerce brasileiro, da auditoria dos dados ao modelo de risco. Termina em um dashboard interativo com 9 abas e respostas diretas para a gerência.",
+    pergunta: "Quanto os pedidos atrasam, em que etapa o tempo se perde, o que explica o atraso e quanto isso custa em satisfação?",
+    fluxo: ["9 tabelas CSV", "Auditoria de qualidade", "Base em SQL (DuckDB)", "Estatística e regressão", "Modelo de risco", "Dashboard interativo"],
+    destaques: [
+      "6,8% dos pedidos atrasam; a rota SP → RJ sozinha responde por 17,6% dos atrasos",
+      "RJ e Nordeste têm cerca de 3x a chance de atraso de SP, mesmo com distância igual",
+      "Monitorando os 10% de pedidos de maior risco, o modelo captura 49,5% dos atrasos"
     ],
-    escopo: "96.455 pedidos · 9 tabelas · 2016 a 2018 · 8 consultas SQL",
-    recomendacoes: [
-      "Atacar os atrasos longos (mais de 3 dias): são cerca de 5% dos pedidos e concentram a queda de nota",
-      "Rever transportadoras e rotas do Nordeste e do Rio de Janeiro, onde o atraso vai de 12% a 24%",
-      "Prometer prazo por estado e planejar capacidade antes dos picos"
-    ],
-    ferramentas: ["SQL (DuckDB)", "Python", "Pandas", "Plotly"],
-    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/olist-logistica-entregas/main/graficos/02_atraso_por_estado.png",
-    metricas: [],
+    ferramentas: ["SQL (DuckDB)", "Python", "Pandas", "statsmodels", "scikit-learn", "Dashboard web"],
+    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/olist-logistica-entregas/main/graficos/00_dashboard_visao_geral.png",
     links: [
-      { r: "Ver análise completa", u: "https://github.com/luiscarlossoarespro-cyber/olist-logistica-entregas", p: true }
+      { r: "Abrir dashboard", u: "https://luiscarlossoarespro-cyber.github.io/olist-logistica-entregas/dashboard/", p: true },
+      { r: "Código e vídeo", u: "https://github.com/luiscarlossoarespro-cyber/olist-logistica-entregas" },
+      { r: "Relatório técnico", u: "https://github.com/luiscarlossoarespro-cyber/olist-logistica-entregas/blob/main/docs/RELATORIO_TECNICO.md" }
     ]
   },
   {
@@ -50,19 +37,21 @@ window.PROJETOS = [
     destaque: false,
     area: "Finanças",
     ano: 2026,
-    titulo: "ERP Financeiro Pessoal — Dashboard Estratégico",
+    titulo: "ERP Financeiro Pessoal",
+    tipo: "Google Sheets · dashboard web",
+    resumo: "Sistema em Google Sheets com um dashboard que mostra onde está o problema, o que fazer primeiro e se os dados são confiáveis.",
     pergunta: "Para onde vai o dinheiro, quais são os gargalos e qual é a próxima decisão?",
-    resultados: [
+    fluxo: ["Lançamentos no Google Sheets", "Fórmulas de gestão", "7 verificações de qualidade", "Dashboard"],
+    destaques: [
       "Gargalos ranqueados e ligados a decisões",
-      "Auditoria de contas vencidas, aumentos fora do normal e duplicidades",
-      "Gestão ágil: backlog, kanban, retrospectiva e placar de regras"
+      "Auditoria automática: vencidas, aumentos fora do normal e duplicidades",
+      "Gestão ágil aplicada: backlog, kanban e retrospectiva"
     ],
     ferramentas: ["Google Sheets", "HTML · CSS · JS", "IA (Claude)"],
     capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal/main/assets/cover.png",
-    metricas: [],
     links: [
       { r: "Ver demonstração", u: "https://luiscarlossoarespro-cyber.github.io/erp-financeiro-pessoal/", p: true },
-      { r: "Documentação", u: "https://github.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal" }
+      { r: "Código", u: "https://github.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal" }
     ]
   },
   {
@@ -70,19 +59,21 @@ window.PROJETOS = [
     destaque: false,
     area: "Vendas",
     ano: 2026,
-    titulo: "Análise de Vendas — Aurora Comercial",
+    titulo: "Análise de Vendas · Aurora Comercial",
+    tipo: "Excel · dashboard web",
+    resumo: "Dashboard de vendas com receita e margem por representante, dispositivo, país, categoria e gerente, com filtros combinados.",
     pergunta: "Quais países, categorias e representantes sustentam a receita e a margem?",
-    resultados: [
+    fluxo: ["Base em Excel", "Tratamento", "Indicadores", "Dashboard com filtros"],
+    destaques: [
       "€ 113,4 M de receita com margem bruta de 16,8%",
       "Portugal e França concentram quase metade da receita",
       "Filtros combinados e exportação do recorte em CSV"
     ],
     ferramentas: ["Excel", "HTML · CSS · JS", "GitHub Pages"],
     capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/analise-vendas-online/main/assets/cover.png",
-    metricas: [],
     links: [
       { r: "Ver dashboard", u: "https://luiscarlossoarespro-cyber.github.io/analise-vendas-online/", p: true },
-      { r: "Documentação", u: "https://github.com/luiscarlossoarespro-cyber/analise-vendas-online" }
+      { r: "Código", u: "https://github.com/luiscarlossoarespro-cyber/analise-vendas-online" }
     ]
   },
   {
@@ -90,23 +81,20 @@ window.PROJETOS = [
     destaque: false,
     area: "Entretenimento",
     ano: 2026,
-    titulo: "Netflix — Análise do Catálogo",
+    titulo: "Catálogo Netflix",
+    tipo: "Tableau Public",
+    resumo: "Dashboard no Tableau Public sobre a composição do catálogo: filmes e séries, países, ano de lançamento e tendência mensal.",
     pergunta: "Como o catálogo se divide entre filmes e séries, países e anos de lançamento?",
-    resultados: [
+    fluxo: ["Base do curso", "Tratamento", "Tableau Public"],
+    destaques: [
       "70% do catálogo são filmes (5.366 títulos)",
       "Os EUA lideram, com 2.732 títulos",
       "2018 é o ano com mais lançamentos (1.142)"
     ],
     ferramentas: ["Tableau Public"],
-    capa: "",
-    metricas: [
-      { v: "70%", l: "filmes · 5.366 títulos" },
-      { v: "30%", l: "séries · 2.293 títulos" },
-      { v: "2.732", l: "títulos dos EUA" },
-      { v: "2018", l: "ano com mais lançamentos" }
-    ],
+    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/luiscarlossoarespro-cyber/main/netflix-cover.png",
     links: [
-      { r: "Ver no Tableau", u: "https://public.tableau.com/app/profile/lu.s.carlos.machado.soares/viz/Livro1_17865361765710/Netflix", p: true },
+      { r: "Abrir no Tableau", u: "https://public.tableau.com/app/profile/lu.s.carlos.machado.soares/viz/Livro1_17865361765710/Netflix", p: true },
       { r: "Documentação", u: "https://github.com/luiscarlossoarespro-cyber/analise-catalogo-netflix" }
     ]
   }

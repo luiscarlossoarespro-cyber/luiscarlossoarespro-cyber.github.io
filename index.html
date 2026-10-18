@@ -18,7 +18,7 @@
   --bg:#0b1020;--bg2:#0f1629;--card:#121a30;--card2:#16203a;--line:rgba(148,170,210,.13);--line2:rgba(148,170,210,.24);
   --tx:#f1f5fc;--tx2:#c4cee0;--tx3:#97a6c2;
   --c1:#6fa8ff;--c2:#a58bff;--ok:#4fd1a5;--warn:#f5b85a;
-  --cell0:#16203a;--cell1:#1d3a6b;--cell2:#2f5fae;--cell3:#4f86e6;--cell4:#8fbaff;
+  --cell0:#141c33;--cell1:#1e3766;--cell2:#2d63c4;--cell3:#5b95ff;--cell4:#dbe8ff;
   --ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--fh:"Inter Tight","Inter",system-ui,sans-serif;--fm:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{box-sizing:border-box;margin:0}
@@ -50,29 +50,29 @@ nav .w{display:flex;align-items:center;justify-content:space-between;gap:14px;pa
 /* hero */
 .hero{padding-block:34px 30px}
 .meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font:500 12.5px var(--fm);color:var(--tx3)}
-.grid-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--bg2),var(--bg));padding:16px 18px 12px}
+.grid-card{border:1px solid var(--line2);border-radius:18px;background:#0d1426;padding:16px 18px 12px}
 .grid-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--tx2);margin-bottom:10px;flex-wrap:wrap}
 .grid-top b{color:var(--tx)}
 .scale{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--tx3)}
 .scale i{width:10px;height:10px;border-radius:2px}
-#hero-cv{display:block;width:100%;height:auto;cursor:crosshair}
-.grid-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:400 11.5px var(--fm);color:var(--tx3);flex-wrap:wrap}
+#hero-cv{display:block;max-width:100%;cursor:crosshair}
+.grid-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:500 12px var(--fm);color:var(--tx2);flex-wrap:wrap}
 .hero-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:end;margin-top:34px}
 @media(max-width:900px){.hero-row{grid-template-columns:minmax(0,1fr);gap:18px}}
 .kk{font:500 12.5px var(--fm);color:var(--c1);letter-spacing:.04em}
 h1{font:800 clamp(40px,6.2vw,78px)/1 var(--fh);letter-spacing:-.04em;text-wrap:balance}
 h1 span{color:var(--c1)}
-.lead{font-size:clamp(16px,1.5vw,18px);color:var(--tx2);max-width:58ch}
+.lead{font-size:clamp(16px,1.5vw,18px);color:#d6deec;max-width:58ch}
 .lead b{color:var(--tx);font-weight:600}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:30px}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .st{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
 .st b{display:block;font:800 clamp(26px,3vw,34px)/1 var(--fh);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.st span{display:block;font-size:12.5px;color:var(--tx3);margin-top:8px}
+.st span{display:block;font-size:13px;color:var(--tx2);margin-top:8px}
 /* ticker */
-.tk{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;margin-top:34px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.tk-in{display:inline-flex;gap:40px;padding-block:11px;animation:tk 60s linear infinite;font:400 13px var(--fm);color:var(--tx3)}
+.tk{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;margin-top:34px;}
+.tk-in{display:inline-flex;gap:40px;padding-block:11px;animation:tk 60s linear infinite;font:400 13px var(--fm);color:var(--tx2)}
 .tk-in span b{color:var(--c1);font-weight:500}.tk-in span em{font-style:normal;color:var(--tx)}
 .tk:hover .tk-in{animation-play-state:paused}
 @keyframes tk{to{transform:translateX(-50%)}}
@@ -360,22 +360,24 @@ const TXT=texto("LUIS CARLOS");const HC=Math.max(TXT.length+8,64),HR=13,OX=Math.
 let hv=[],ht=[],mouse={x:-99,y:-99};
 for(let i=0;i<HC*HR;i++){hv.push(0);ht.push(0)}
 function alvoHero(){for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];
-  ht[y*HC+x]=on?(3+Math.random()*1.2):(Math.random()<.16?Math.random()*1.8:0)}}
+  ht[y*HC+x]=on?4:(Math.random()<.10?(Math.random()<.6?1:2):0)}}
 alvoHero();
-function tamHero(){const w=hc.parentElement.clientWidth-36;const cs=Math.max(6,Math.floor(w/HC));hc.width=cs*HC*devicePixelRatio;hc.height=cs*HR*devicePixelRatio;hc.style.height=(cs*HR)+"px";hc._cs=cs}
+function tamHero(){const w=hc.parentElement.clientWidth-36;const cs=Math.max(6,Math.floor(w/HC));const k=Math.max(2,devicePixelRatio||1);hc.width=cs*HC*k;hc.height=cs*HR*k;hc.style.width=(cs*HC)+"px";hc.style.height=(cs*HR)+"px";hc.style.margin="0 auto";hc._cs=cs}
 tamHero();addEventListener("resize",tamHero);
 hc.addEventListener("mousemove",e=>{const r=hc.getBoundingClientRect(),cs=r.width/HC;mouse={x:Math.floor((e.clientX-r.left)/cs),y:Math.floor((e.clientY-r.top)/cs)}});
 hc.addEventListener("mouseleave",()=>mouse={x:-99,y:-99});
 hc.addEventListener("click",()=>alvoHero());
 let first=!RED;
-function drawHero(){const cs=hc.width/HC,g=cs*.18,r=cs*.22;hx.clearRect(0,0,hc.width,hc.height);
+function drawHero(){const cs=hc.width/HC,g=Math.round(cs*.2),r=cs*.2,sz=Math.round(cs)-g;hx.clearRect(0,0,hc.width,hc.height);
   for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const i=y*HC+x;let t=ht[i];const d=Math.hypot(x-mouse.x,y-mouse.y);if(d<2.2)t=Math.max(t,4-d);
-    hv[i]+=(t-hv[i])*(first?.06:.18);const lv=Math.max(0,Math.min(4,Math.round(hv[i])));
-    hx.fillStyle=CELL[lv];const px=x*cs+g/2,py=y*cs+g/2,s=cs-g;hx.beginPath();if(hx.roundRect)hx.roundRect(px,py,s,s,r);else hx.rect(px,py,s,s);hx.fill()}
-  requestAnimationFrame(drawHero)}
+    hv[i]+=(t-hv[i])*(first?.08:.22);const lv=Math.max(0,Math.min(4,Math.round(hv[i])));
+    const px=Math.round(x*cs+g/2),py=Math.round(y*cs+g/2);
+    if(lv===4){hx.shadowColor="rgba(120,170,255,.75)";hx.shadowBlur=cs*.55}else{hx.shadowBlur=0}
+    hx.fillStyle=CELL[lv];hx.beginPath();if(hx.roundRect)hx.roundRect(px,py,sz,sz,r);else hx.rect(px,py,sz,sz);hx.fill()}
+  hx.shadowBlur=0;requestAnimationFrame(drawHero)}
 if(RED){for(let i=0;i<hv.length;i++)hv[i]=ht[i]}
 requestAnimationFrame(drawHero);setTimeout(()=>first=false,1800);
-if(!RED)setInterval(()=>{for(let k=0;k<6;k++){const x=Math.floor(Math.random()*HC),y=Math.floor(Math.random()*HR),tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];if(!on)ht[y*HC+x]=Math.random()<.5?0:Math.random()*2}},700);
+if(!RED)setInterval(()=>{for(let k=0;k<6;k++){const x=Math.floor(Math.random()*HC),y=Math.floor(Math.random()*HR),tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];if(!on)ht[y*HC+x]=Math.random()<.6?0:(Math.random()<.6?1:2)}},700);
 
 /* ---------- grade lateral que muda de desenho por seção ---------- */
 const SC=28,SR=28,sc=$("sec-cv"),sx=sc.getContext("2d");

@@ -134,16 +134,6 @@ h2{font:800 clamp(30px,4vw,50px)/1.05 var(--fh);letter-spacing:-.035em;margin:10
 .sp b{font:500 12px var(--fm);color:var(--c1)}
 .sp strong{display:block;font:700 15px var(--fh);margin:4px 0}
 .sp span{font-size:13px;color:var(--tx3)}
-.pv{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--bg2)}
-.pv h3{font:700 16px var(--fh);margin-bottom:4px}.pv>p{font-size:13px;color:var(--tx3);margin:0 0 12px}
-.pv table{width:100%;border-collapse:collapse;font-size:13.5px}
-.pv th{font:600 11px var(--fh);letter-spacing:.06em;text-transform:uppercase;color:var(--tx3);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
-.pv td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--tx2)}
-.pv td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
-.pv tr:last-child td{border-bottom:0}
-.pv button{font:600 12px var(--fm,monospace);margin:2px 6px 2px 0;padding:4px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(111,168,255,.08);color:var(--ac,#6fa8ff);cursor:pointer}
-.pv button:hover{background:rgba(111,168,255,.2)}
-@media(max-width:700px){.pv td:first-child{white-space:normal}.pv th:nth-child(3),.pv td:nth-child(3){display:none}}
 .eng{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:18px;background:linear-gradient(135deg,rgba(111,168,255,.07),rgba(165,139,255,.05))}
 .eng h3{font:700 16px var(--fh);margin-bottom:8px}
 .eng ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:13.5px;color:var(--tx2)}
@@ -258,17 +248,6 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
         <div class="tl rv"><h3>Produtividade e IA</h3><p>Uso prático no dia a dia</p><div class="chips"><span>IA generativa (Claude)</span><span>Git e GitHub</span><span>GitHub Pages</span><span class="f">Scrum</span></div></div>
         <div class="tl rv"><h3>Formação em andamento</h3><p>Base acadêmica</p><div class="chips"><span>Administração de Empresas</span><span>Processos Gerenciais</span><span>Técnico em Análise de Dados</span></div></div>
       </div>
-      <div class="pv rv"><h3>Onde está a prova</h3><p>Cada habilidade ligada ao projeto publicado em que foi usada. Clique para abrir o projeto.</p>
-        <table><thead><tr><th>Habilidade</th><th>Projeto</th><th>O que foi feito</th></tr></thead><tbody>
-        <tr><td>SQL (DuckDB)</td><td><button data-pj="olist">Olist</button></td><td>9 tabelas reunidas em uma base com uma linha por pedido</td></tr>
-        <tr><td>Python e Pandas</td><td><button data-pj="olist">Olist</button><button data-pj="conformidade">FDA</button></td><td>Auditoria, limpeza e indicadores com scripts numerados</td></tr>
-        <tr><td>Estatística e modelo de risco</td><td><button data-pj="olist">Olist</button></td><td>Intervalo de confiança, regressão logística e validação em meses não vistos</td></tr>
-        <tr><td>Auditoria de qualidade</td><td><button data-pj="olist">Olist</button><button data-pj="conformidade">FDA</button></td><td>Checagens antes de calcular qualquer número (61 na base da FDA)</td></tr>
-        <tr><td>Conferência de números</td><td><button data-pj="conformidade">FDA</button></td><td>Planilha de tratamento contra o arquivo original: 15 de 15 indicadores batem</td></tr>
-        <tr><td>Dashboard interativo</td><td><button data-pj="olist">Olist</button><button data-pj="conformidade">FDA</button><button data-pj="vendas">Vendas</button></td><td>Filtros combinados e respostas diretas para quem decide</td></tr>
-        <tr><td>Excel e Google Sheets</td><td><button data-pj="vendas">Vendas</button><button data-pj="erp">ERP</button><button data-pj="conformidade">FDA</button></td><td>Base de vendas, sistema financeiro e planilha de tratamento</td></tr>
-        <tr><td>Tableau Public</td><td><button data-pj="netflix">Netflix</button></td><td>Painel sobre o catálogo de filmes e séries</td></tr>
-        </tbody></table></div>
       <div class="legend rv"><span style="--c:rgba(111,168,255,.5)">em uso nos projetos</span><span style="--c:rgba(245,184,90,.5)">em formação</span></div>
     </div>
   </div>
@@ -443,7 +422,6 @@ function mostrar(i){const p=PJ[i];const d=$("pj-d");d.classList.remove("fade");v
   document.querySelectorAll(".pj-it").forEach(b=>b.setAttribute("aria-selected",+b.dataset.i===i))}
 $("pj-list").addEventListener("click",e=>{const b=e.target.closest(".pj-it");if(b)mostrar(+b.dataset.i)});
 mostrar(0);
-document.addEventListener("click",e=>{const b=e.target.closest("[data-pj]");if(!b)return;const i=PJ.findIndex(p=>p.id===b.dataset.pj);if(i<0)return;mostrar(i);$("projetos").scrollIntoView({behavior:"smooth"})});
 
 /* ---------- últimas atualizações do GitHub (ao vivo, com reserva fixa) ---------- */
 const RESERVA=[["olist-logistica-entregas","Análise de atrasos de entrega no e-commerce brasileiro (Olist) com SQL e Python"],["luiscarlossoarespro-cyber.github.io","Portfólio de Análise de Dados"],["erp-financeiro-pessoal","Dashboard estratégico de finanças pessoais"],["analise-vendas-online","Dashboard interativo de vendas (Aurora Comercial)"],["analise-catalogo-netflix","Dashboard no Tableau Public sobre o catálogo da Netflix"]];

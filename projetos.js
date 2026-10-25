@@ -33,28 +33,6 @@ window.PROJETOS = [
     ]
   },
   {
-    id: "erp",
-    destaque: false,
-    area: "Finanças",
-    ano: 2026,
-    titulo: "ERP Financeiro Pessoal",
-    tipo: "Google Sheets · dashboard web",
-    resumo: "Sistema em Google Sheets com um dashboard que mostra onde está o problema, o que fazer primeiro e se os dados são confiáveis.",
-    pergunta: "Para onde vai o dinheiro, quais são os gargalos e qual é a próxima decisão?",
-    fluxo: ["Lançamentos no Google Sheets", "Fórmulas de gestão", "7 verificações de qualidade", "Dashboard"],
-    destaques: [
-      "Gargalos ranqueados e ligados a decisões",
-      "Auditoria automática: vencidas, aumentos fora do normal e duplicidades",
-      "Gestão ágil aplicada: backlog, kanban e retrospectiva"
-    ],
-    ferramentas: ["Google Sheets", "HTML · CSS · JS", "IA (Claude)"],
-    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal/main/assets/cover.png",
-    links: [
-      { r: "Ver demonstração", u: "https://luiscarlossoarespro-cyber.github.io/erp-financeiro-pessoal/", p: true },
-      { r: "Código", u: "https://github.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal" }
-    ]
-  },
-  {
     id: "vendas",
     destaque: false,
     area: "Vendas",
@@ -96,6 +74,28 @@ window.PROJETOS = [
     links: [
       { r: "Abrir no Tableau", u: "https://public.tableau.com/app/profile/lu.s.carlos.machado.soares/viz/Livro1_17865361765710/Netflix", p: true },
       { r: "Documentação", u: "https://github.com/luiscarlossoarespro-cyber/analise-catalogo-netflix" }
+    ]
+  },
+  {
+    id: "erp",
+    destaque: false,
+    area: "Finanças",
+    ano: 2026,
+    titulo: "ERP Financeiro Pessoal",
+    tipo: "Google Sheets · dashboard web",
+    resumo: "Sistema em Google Sheets com um dashboard que mostra onde está o problema, o que fazer primeiro e se os dados são confiáveis.",
+    pergunta: "Para onde vai o dinheiro, quais são os gargalos e qual é a próxima decisão?",
+    fluxo: ["Lançamentos no Google Sheets", "Fórmulas de gestão", "7 verificações de qualidade", "Dashboard"],
+    destaques: [
+      "Gargalos ranqueados e ligados a decisões",
+      "Auditoria automática: vencidas, aumentos fora do normal e duplicidades",
+      "Gestão ágil aplicada: backlog, kanban e retrospectiva"
+    ],
+    ferramentas: ["Google Sheets", "HTML · CSS · JS", "IA (Claude)"],
+    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal/main/assets/cover.png",
+    links: [
+      { r: "Ver demonstração", u: "https://luiscarlossoarespro-cyber.github.io/erp-financeiro-pessoal/", p: true },
+      { r: "Código", u: "https://github.com/luiscarlossoarespro-cyber/erp-financeiro-pessoal" }
     ]
   }
 ];

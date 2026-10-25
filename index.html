@@ -217,7 +217,7 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
     <div class="st"><b data-n="16">16</b><span>anos em operações e logística</span></div>
     <div class="st"><b id="n-proj" data-n="4">4</b><span>projetos de dados publicados</span></div>
     <div class="st"><b id="n-repos" data-n="6">6</b><span>repositórios públicos no GitHub</span></div>
-    <div class="st"><b data-n="80" data-p="+">+80</b><span>colaboradores treinados na operação</span></div>
+    <div class="st"><b data-n="125917">125.917</b><span>registros reais analisados (Olist e FDA)</span></div>
   </div>
   <div class="tk" aria-label="Últimas atualizações no GitHub"><div class="tk-in" id="tk"></div></div>
 </header>
@@ -272,6 +272,9 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
         <li>Números do relatório conferidos por script</li>
         <li>Validação temporal no modelo (sem "vazar" o futuro)</li>
         <li>Documentação: relatório técnico e dicionário de dados</li>
+        <li>Planilha de tratamento conferida contra o arquivo original (15 de 15 indicadores no projeto FDA)</li>
+        <li>Limitações de cada projeto escritas no próprio relatório, sem esconder o que a base não mostra</li>
+        <li>Código aberto e vídeo de demonstração nos projetos de dados mais recentes</li>
       </ul></div>
     </div>
   </div>
@@ -411,6 +414,8 @@ function mostrar(i){const p=PJ[i];const d=$("pj-d");d.classList.remove("fade");v
   <h3>${esc(p.titulo)}</h3><div class="ty">${esc(p.tipo)}</div><p>${esc(p.resumo)}</p><p class="q">Pergunta: ${esc(p.pergunta)}</p>
   <div class="mini">caminho dos dados</div><div class="flow">${p.fluxo.map(f=>`<span>${esc(f)}</span>`).join('<i>→</i>')}</div>
   <div class="mini">destaques</div><ul>${p.destaques.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+  ${p.decisao?`<div class="mini">decisão que ajuda a tomar</div><p>${esc(p.decisao)}</p>`:""}
+  ${p.limites?`<div class="mini">limitações</div><ul>${p.limites.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
   <div class="mini">ferramentas</div><div class="chips">${p.ferramentas.map(x=>`<span>${esc(x)}</span>`).join("")}</div>
   <div class="btns">${p.links.map(k=>`<a class="btn s${k.p?" p":""}" href="${esc(k.u)}" target="_blank" rel="noopener">${esc(k.r)} ↗</a>`).join("")}</div>`;
   document.querySelectorAll(".pj-it").forEach(b=>b.setAttribute("aria-selected",+b.dataset.i===i))}
@@ -434,7 +439,7 @@ const els=document.querySelectorAll(".rv");
 if(!("IntersectionObserver" in window)||RED){els.forEach(e=>e.classList.add("in"))}else{
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -5% 0px"});
   els.forEach(e=>io.observe(e))}
-function contar(b){if(RED)return;const n=+b.dataset.n,p=b.dataset.p||"",t0=performance.now();(function f(){const k=Math.max(0,Math.min(1,(performance.now()-t0)/1200)),e=1-Math.pow(1-k,4);b.textContent=p+Math.round(n*e);if(k<1)requestAnimationFrame(f)})()}
+function contar(b){if(RED)return;const n=+b.dataset.n,p=b.dataset.p||"",t0=performance.now();(function f(){const k=Math.max(0,Math.min(1,(performance.now()-t0)/1200)),e=1-Math.pow(1-k,4);b.textContent=p+Math.round(n*e).toLocaleString("pt-BR");if(k<1)requestAnimationFrame(f)})()}
 setTimeout(()=>document.querySelectorAll(".st b[data-n]").forEach(contar),250);
 })();
 </script>

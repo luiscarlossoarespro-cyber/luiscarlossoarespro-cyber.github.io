@@ -10,6 +10,28 @@
 */
 window.PROJETOS = [
   {
+    id: "conformidade",
+    destaque: false,
+    area: "Logística",
+    ano: 2026,
+    titulo: "Conformidade no Recebimento: recolhimentos reais da FDA",
+    tipo: "Python · auditoria de dados · dashboard · calculadora",
+    resumo: "Estudo de 29.485 recolhimentos reais de alimentos (dados públicos da FDA), da auditoria da base à conferência da planilha de tratamento. Termina em um dashboard interativo de 9 abas com calculadora de vida útil restante para o conferente.",
+    pergunta: "Que tipos de problema levam a recolhimentos, quão graves são, quanto tempo levam e o que a conferência no recebimento consegue perceber?",
+    fluxo: ["Arquivo público openFDA", "Auditoria de qualidade (61 checagens)", "Conferência da planilha contra o original", "Limpeza sem correção por suposição", "Dashboard interativo"],
+    destaques: [
+      "Contaminação microbiológica é a maior causa: 44,1% dos recolhimentos, e 75,0% deles são Classe I (risco sério)",
+      "A FDA leva 38 dias (mediana) para classificar o risco; 88,9% citam código ou lote, mas 10,2% recolhem todos os lotes",
+      "15 de 15 indicadores da planilha de tratamento batem com o arquivo original; 0 números de recolhimento repetidos"
+    ],
+    ferramentas: ["Python", "Pandas", "Google Sheets", "Dashboard web (HTML · JS)", "Playwright"],
+    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/conformidade-recebimento-fda/main/capa_dashboard.png",
+    links: [
+      { r: "Abrir dashboard", u: "https://luiscarlossoarespro-cyber.github.io/conformidade-recebimento-fda/dashboard/", p: true },
+      { r: "Código e vídeo", u: "https://github.com/luiscarlossoarespro-cyber/conformidade-recebimento-fda" }
+    ]
+  },
+  {
     id: "olist",
     destaque: true,
     area: "Logística",

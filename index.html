@@ -4,445 +4,269 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Luis Carlos Machado Soares · Análise de Dados | Logística</title>
-<meta name="description" content="Análise de dados aplicada à logística: SQL, Python, estatística e dashboards. 16 anos de carreira em operações e logística.">
+<meta name="description" content="Análise de dados aplicada à logística: SQL, Python, estatística e dashboards. Mais de 16 anos em operações e logística.">
 <meta property="og:title" content="Luis Carlos Machado Soares · Análise de Dados | Logística">
-<meta property="og:description" content="Dados que viram decisão na operação. Projetos com SQL, Python, estatística e dashboards interativos.">
+<meta property="og:description" content="Do recebimento ao indicador: projetos com perguntas de gestão, base conferida e limitações escritas.">
 <meta property="og:image" content="https://luiscarlossoarespro-cyber.github.io/og-portfolio.png">
-<meta name="theme-color" content="#0b1020">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<meta name="theme-color" content="#12303f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout: grade de "células de dados" fixa à esquerda que muda de desenho a cada seção; conteúdo à direita. */
-:root{
-  color-scheme:dark;
-  --bg:#0b1020;--bg2:#0f1629;--card:#121a30;--card2:#16203a;--line:rgba(148,170,210,.13);--line2:rgba(148,170,210,.24);
-  --tx:#f1f5fc;--tx2:#c4cee0;--tx3:#97a6c2;
-  --c1:#6fa8ff;--c2:#a58bff;--ok:#4fd1a5;--warn:#f5b85a;
-  --cell0:#141c33;--cell1:#1e3766;--cell2:#2d63c4;--cell3:#5b95ff;--cell4:#dbe8ff;
-  --ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--fh:"Inter Tight","Inter",system-ui,sans-serif;--fm:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--bg);color:var(--tx);font:15px/1.6 var(--ff);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--c1);outline-offset:3px;border-radius:6px}
-.w{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-#bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--c1),var(--c2))}
-nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .w{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:13px}
-.lg{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 15px var(--fh)}
-.lg-g{display:grid;grid-template-columns:repeat(3,6px);gap:2px}
-.lg-g i{width:6px;height:6px;border-radius:1.5px;background:var(--cell2)}
-.lg-g i:nth-child(1),.lg-g i:nth-child(5),.lg-g i:nth-child(9){background:var(--cell4)}
-.lg-g i:nth-child(3),.lg-g i:nth-child(7){background:var(--cell3)}
-.nl{display:flex;gap:2px}
-.nl a{text-decoration:none;font-size:13.5px;color:var(--tx2);padding:7px 11px;border-radius:8px;position:relative}
-.nl a:hover,.nl a.on{color:var(--tx)}
-.nl a.on::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;border-radius:2px;background:var(--c1)}
-.nr{display:flex;align-items:center;gap:10px}
-.clock{font:500 12.5px var(--fm);color:var(--tx3);display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid var(--line);border-radius:99px}
-.clock i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(79,209,165,.18)}
-@media(max-width:860px){.nl{display:none}.clock{display:none}}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 14px var(--ff);padding:11px 18px;border-radius:11px;border:1px solid var(--line2);background:transparent;color:var(--tx);cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
-.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.04);border-color:rgba(148,170,210,.4)}
-.btn.p{background:linear-gradient(135deg,var(--c1),var(--c2));color:#0b1020;border:0}
-.btn.s{padding:8px 13px;font-size:13px;border-radius:9px}
-/* hero */
-.hero{padding-block:34px 30px}
-.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font:500 12.5px var(--fm);color:var(--tx3)}
-.grid-card{border:1px solid var(--line2);border-radius:18px;background:#0d1426;padding:16px 18px 12px}
-.grid-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--tx2);margin-bottom:10px;flex-wrap:wrap}
-.grid-top b{color:var(--tx)}
-.scale{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--tx3)}
-.scale i{width:10px;height:10px;border-radius:2px}
-#hero-cv{display:block;max-width:100%;cursor:crosshair}
-.grid-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:500 12px var(--fm);color:var(--tx2);flex-wrap:wrap}
-.hero-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:end;margin-top:34px}
-@media(max-width:900px){.hero-row{grid-template-columns:minmax(0,1fr);gap:18px}}
-.kk{font:500 12.5px var(--fm);color:var(--c1);letter-spacing:.04em}
-h1{font:800 clamp(40px,6.2vw,78px)/1 var(--fh);letter-spacing:-.04em;text-wrap:balance}
-h1 span{color:var(--c1)}
-.lead{font-size:clamp(16px,1.5vw,18px);color:#d6deec;max-width:58ch}
-.lead b{color:var(--tx);font-weight:600}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:30px}
-@media(max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.st{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
-.st b{display:block;font:800 clamp(26px,3vw,34px)/1 var(--fh);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.st span{display:block;font-size:13px;color:var(--tx2);margin-top:8px}
-/* ticker */
-.tk{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;margin-top:34px;}
-.tk-in{display:inline-flex;gap:40px;padding-block:11px;animation:tk 60s linear infinite;font:400 13px var(--fm);color:var(--tx2)}
-.tk-in span b{color:var(--c1);font-weight:500}.tk-in span em{font-style:normal;color:var(--tx)}
-.tk:hover .tk-in{animation-play-state:paused}
-@keyframes tk{to{transform:translateX(-50%)}}
-/* seções com grade fixa */
-.lay{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);gap:56px;align-items:start}
-.sec{padding-top:90px}
-@media(max-width:980px){.lay{grid-template-columns:minmax(0,1fr);gap:0}.sec{padding-top:64px}.aside{display:none}}
-.aside{align-self:stretch;padding-top:90px}
-.aside{position:relative}
-.stick{position:sticky;top:96px}
-.pix{border:1px solid var(--line);border-radius:18px;background:var(--bg2);padding:14px}
-#sec-cv{display:block;width:100%;height:auto}
-.commit{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font:400 12.5px var(--fm);display:flex;justify-content:space-between;gap:10px;color:var(--tx3)}
-.commit b{color:var(--ok);font-weight:500}.commit em{font-style:normal;color:var(--tx)}
-.lab{font:500 12.5px var(--fm);color:var(--c1);display:flex;gap:10px;align-items:center}
-.lab code{color:var(--tx3);font-family:var(--fm)}
-h2{font:800 clamp(30px,4vw,50px)/1.05 var(--fh);letter-spacing:-.035em;margin:10px 0 12px;text-wrap:balance}
-.sub{color:var(--tx2);max-width:62ch}
-/* projetos: lista + detalhe */
-.pj{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:14px;margin-top:26px}
-@media(max-width:700px){.pj{grid-template-columns:minmax(0,1fr)}}
-.pj-list{display:flex;flex-direction:column;gap:8px}
-.pj-it{text-align:left;border:1px solid var(--line);background:var(--bg2);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--tx);transition:border-color .2s,background .2s}
-.pj-it b{display:block;font:700 14.5px var(--fh)}
-.pj-it span{display:block;font:400 11.5px var(--fm);color:var(--tx3);margin-top:3px}
-.pj-it[aria-selected=true]{border-color:var(--c1);background:var(--card)}
-.pj-it:hover{border-color:var(--line2)}
-.pj-d{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px 22px;min-width:0}
-.pj-d .cap{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8.5;background:#0a0f1d;margin-bottom:16px;max-width:100%}
-.pj-d .cap img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .6s}
-.pj-d .cap:hover img{transform:scale(1.02)}
-.pj-d h3{font:800 22px/1.2 var(--fh);letter-spacing:-.02em}
-.pj-d .ty{font:400 12px var(--fm);color:var(--c1);margin-top:4px}
-.pj-d p{color:var(--tx2);margin-top:10px}
-.pj-d .q{font-style:italic;color:var(--tx3);font-size:14px}
-.mini{font:500 11px var(--fm);color:var(--tx3);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px}
-.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.flow span{font:400 12px var(--fm);padding:5px 9px;border:1px solid var(--line2);border-radius:7px;color:var(--tx);background:rgba(255,255,255,.02)}
-.flow i{font-style:normal;color:var(--c1);font-size:12px}
-.pj-d ul{padding-left:18px;color:var(--tx2);display:grid;gap:5px;font-size:14px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font:400 12px var(--fm);padding:4px 9px;border-radius:7px;background:rgba(111,168,255,.1);color:#bcd3ff}
-.pj-d .btns{margin-top:16px}
-.fade{animation:fd .45s ease}
-@keyframes fd{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:none}}
-/* ferramentas */
-.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:26px}
-@media(max-width:700px){.tools{grid-template-columns:minmax(0,1fr)}}
-.tl{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:18px}
-.tl h3{font:700 16px var(--fh)}
-.tl p{font-size:13px;color:var(--tx3);margin:4px 0 12px}
-.tl .chips span.f{background:rgba(245,184,90,.1);color:#f7d39a}
-.legend{display:flex;gap:16px;font-size:12px;color:var(--tx3);margin-top:14px;flex-wrap:wrap}
-.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
-/* método / engenharia */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px}
-@media(max-width:700px){.steps{grid-template-columns:minmax(0,1fr)}}
-.sp{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg2)}
-.sp b{font:500 12px var(--fm);color:var(--c1)}
-.sp strong{display:block;font:700 15px var(--fh);margin:4px 0}
-.sp span{font-size:13px;color:var(--tx3)}
-.eng{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:18px;background:linear-gradient(135deg,rgba(111,168,255,.07),rgba(165,139,255,.05))}
-.eng h3{font:700 16px var(--fh);margin-bottom:8px}
-.eng ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:13.5px;color:var(--tx2)}
-@media(max-width:700px){.eng ul{grid-template-columns:minmax(0,1fr)}}
-.eng li::before{content:"✓";color:var(--ok);margin-right:8px;font-weight:700}
-/* operação */
-.ops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}
-@media(max-width:700px){.ops{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.op{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg2)}
-.op b{display:block;font:800 26px/1 var(--fh);letter-spacing:-.02em}
-.op span{display:block;font-size:12px;color:var(--tx3);margin-top:6px}
-.tline{margin-top:18px;border-left:2px solid var(--line2);display:grid;gap:4px}
-.ti{position:relative;padding:12px 0 12px 22px}
-.ti::before{content:"";position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:3px;background:var(--cell3);box-shadow:0 0 0 4px var(--bg)}
-.ti time{font:500 12px var(--fm);color:var(--c1)}
-.ti h3{font:700 16px var(--fh);margin-top:2px}
-.ti p{font-size:13.5px;color:var(--tx2);margin-top:3px}
-/* contato */
-.ct{margin-top:110px;position:relative;border:1px solid rgba(111,168,255,.32);border-radius:28px;padding:clamp(26px,4.5vw,56px);overflow:hidden;
-  background:radial-gradient(900px 420px at 0% 0%,rgba(111,168,255,.20),transparent 60%),radial-gradient(700px 380px at 100% 100%,rgba(165,139,255,.18),transparent 60%),#0e1630;
-  box-shadow:0 30px 80px -30px rgba(40,80,180,.45)}
-.ct-g{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative}
-@media(max-width:900px){.ct-g{grid-template-columns:minmax(0,1fr)}}
-.ct h2{font-size:clamp(34px,4.6vw,58px);margin:12px 0 16px}
-.ct h2 span{background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.ct .sub{color:var(--tx2);font-size:16.5px}
-.ct .sub b{color:var(--tx);font-weight:600}
-.gets{list-style:none;padding:0;margin:22px 0 4px;display:grid;gap:12px}
-.gets li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;font-size:15px;color:var(--tx)}
-.gets li i{font-style:normal;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(111,168,255,.16);color:var(--c1);font:700 13px var(--fm)}
-.gets li span{color:var(--tx2);display:block;font-size:13.5px}
-.ct .btns{margin-top:26px}
-.btn.lg{padding:14px 22px;font-size:15px;border-radius:13px}
-.copy{font-family:var(--fm)}
-.copy.ok{border-color:var(--ok);color:var(--ok)}
-.card{border:1px solid rgba(148,170,210,.28);border-radius:18px;background:rgba(9,14,30,.78);overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
-.card-h{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);font:500 12.5px var(--fm);color:var(--tx2)}
-.card-h i{width:10px;height:10px;border-radius:50%;background:#ff6b6b}.card-h i:nth-child(2){background:#f5b85a}.card-h i:nth-child(3){background:var(--ok);margin-right:8px}
-.card pre{margin:0;padding:16px 18px 6px;font:400 13px/1.7 var(--fm);color:var(--tx);white-space:pre-wrap}
-.card pre b{color:var(--c2);font-weight:600}.card pre em{font-style:normal;color:var(--c1)}
-.rows{padding:6px 18px 18px;display:grid;gap:0}
-.row{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
-.row dt{font:500 12px var(--fm);color:var(--tx3);padding-top:2px}
-.row dd{margin:0;color:var(--tx);font-weight:500}
-.row dd a{color:var(--c1);text-decoration:none}.row dd a:hover{text-decoration:underline}
-.card-f{display:flex;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid var(--line);font:500 12.5px var(--fm);color:var(--ok);background:rgba(79,209,165,.06)}
-.card-f i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(79,209,165,.2);animation:pl 2s infinite}
-@keyframes pl{50%{box-shadow:0 0 0 7px rgba(79,209,165,.05)}}
-@media(prefers-reduced-motion:reduce){.card-f i{animation:none}}
-footer{margin-top:60px;border-top:1px solid var(--line);padding-block:24px 40px}
-footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:400 12.5px var(--fm);color:var(--tx3)}
-/* revelação na rolagem (estado de repouso visível) */
-.rv{transform:translateY(22px);transition:transform .8s cubic-bezier(.16,.84,.3,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.tk-in{animation:none}html{scroll-behavior:auto}}
+:root{--bg:#f4f2ec;--card:#ffffff;--ink:#14202a;--muted:#5a6872;--line:#dfdbcf;--navy:#12303f;--accent:#0f6b5c;--accent-soft:#e3f1ed;--warm:#b4561b;--warm-soft:#f8e8db;--note:#fff1b8;--note-ink:#5e4800;--bar:#0f6b5c;--bar2:#d3cdbd}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1418;--card:#141e24;--ink:#e8eef0;--muted:#9fb0b6;--line:#26343b;--navy:#0a1d27;--accent:#4fc3ad;--accent-soft:#11302b;--warm:#f09a5b;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#4fc3ad;--bar2:#2d3d44;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1418;--card:#141e24;--ink:#e8eef0;--muted:#9fb0b6;--line:#26343b;--navy:#0a1d27;--accent:#4fc3ad;--accent-soft:#11302b;--warm:#f09a5b;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#4fc3ad;--bar2:#2d3d44;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+.in{max-width:1040px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.18;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.6vw,3.3rem);font-weight:700;letter-spacing:-.015em}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .in{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600}
+.mono{width:34px;height:34px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:"Source Serif 4",serif;font-size:.95rem;font-weight:700}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.9rem}
+.bar nav a{color:var(--muted);text-decoration:none}
+.bar nav a:hover{color:var(--accent)}
+.hero{padding-block:56px 44px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:820px){.hero{grid-template-columns:1fr;gap:28px;padding-block:36px 28px}}
+.eyebrow{font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:14px}
+.lead{font-size:1.1rem;max-width:58ch;margin-top:18px}
+.lead2{color:var(--muted);max-width:58ch;margin-top:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.chip{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:5px 13px;font-size:.84rem;font-weight:600}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;border:1.5px solid var(--accent)}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{color:var(--accent);background:transparent}
+.sum{background:var(--navy);color:#e9f1f3;border-radius:14px;padding:22px;display:grid;gap:16px}
+.sum h3{font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:#9fc7d0;font-family:Inter,sans-serif;font-weight:600}
+.sum dl{margin:0;display:grid;gap:14px}
+.sum dt{font-size:.76rem;color:#8fb1ba;text-transform:uppercase;letter-spacing:.08em}
+.sum dd{margin:2px 0 0;font-size:.97rem}
+.sum .big{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px solid #2a4857;padding-top:16px}
+.sum .big b{display:block;font-family:"Source Serif 4",serif;font-size:1.55rem;font-variant-numeric:tabular-nums;color:#fff}
+.sum .big span{font-size:.74rem;color:#9fc7d0;line-height:1.3;display:block}
+section{padding-block:52px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:8px;margin-bottom:26px}
+.sec-head p{color:var(--muted);max-width:64ch}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.mini b{display:block;font-family:"Source Serif 4",serif;font-size:1.05rem;margin-bottom:4px}
+.mini span{color:var(--muted);font-size:.92rem}
+.num{color:var(--warm);font-weight:700;font-size:.8rem;letter-spacing:.1em;margin-bottom:6px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:22px;overflow:hidden}
+.case-h{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;padding:14px clamp(18px,3vw,28px);background:var(--accent-soft);border-bottom:1px solid var(--line)}
+.case-h .n{font-weight:700;font-size:.8rem;letter-spacing:.12em;color:var(--accent)}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:.74rem;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);background:var(--card)}
+.tag.w{background:var(--warm-soft);color:var(--warm);border-color:transparent;font-weight:600}
+.case-b{padding:clamp(18px,3vw,28px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px}
+@media (max-width:820px){.case-b{grid-template-columns:1fr}}
+.q{font-family:"Source Serif 4",serif;font-size:1.12rem;font-style:italic;color:var(--muted);margin-top:8px}
+.rows{display:grid;gap:12px;margin-top:18px}
+.row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;font-size:.94rem}
+.row .k{color:var(--muted);font-weight:600;font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;padding-top:3px}
+@media (max-width:560px){.row{grid-template-columns:1fr;gap:2px}}
+.fill{background:var(--note);color:var(--note-ink);border-radius:4px;padding:1px 6px}
+.viz{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:14px;align-content:start}
+.viz .t{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.kpi b{display:block;font-family:"Source Serif 4",serif;font-size:1.6rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi span{font-size:.8rem;color:var(--muted)}
+.hb{display:grid;gap:7px}
+.hb .r{display:grid;grid-template-columns:78px minmax(0,1fr) 46px;gap:8px;align-items:center;font-size:.82rem}
+.hb .track{background:var(--bar2);border-radius:4px;height:14px;overflow:hidden}
+.hb .fillb{height:100%;background:var(--bar);border-radius:4px}
+.hb .v{font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+.stack{display:flex;height:22px;border-radius:5px;overflow:hidden}
+.stack i{display:block;height:100%}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.src{font-size:.76rem;color:var(--muted)}
+.decide{grid-column:1/-1;background:var(--accent-soft);border-radius:10px;padding:13px 16px;font-size:.94rem}
+.decide b{color:var(--accent)}
+.foot{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.tools span{background:var(--accent-soft);color:var(--accent);padding:3px 10px;border-radius:6px;font-size:.78rem;font-weight:600}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.table{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:.92rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.s-ok{color:var(--accent);font-weight:700}.s-p{color:var(--warm);font-weight:700}.s-n{color:var(--muted)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.form div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:.92rem}
+.form small{display:block;color:var(--muted);margin-top:2px}
+.quote{font-family:"Source Serif 4",serif;font-size:clamp(1.3rem,3vw,1.75rem);max-width:34ch;line-height:1.35;border-left:4px solid var(--warm);padding-left:18px}
+.contact{background:var(--navy);color:#e9f1f3;border-radius:16px;padding:clamp(22px,4vw,36px);display:grid;gap:14px}
+.contact h2{color:#fff}
+.contact p{color:#b9d3da;max-width:58ch}
+.contact .btn.p{background:#fff;color:var(--navy);border-color:#fff}
+.contact .btn.s{color:#fff;border-color:#4f7686}
+footer{padding-block:28px 56px;color:var(--muted);font-size:.88rem;display:grid;gap:6px}
 </style>
 </head>
 <body>
-<div id="bar"></div>
-<nav><div class="w">
-  <a class="lg" href="#topo"><span class="lg-g" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>luis carlos</a>
-  <div class="nl" id="nl"><a href="#projetos">Projetos</a><a href="#ferramentas">Ferramentas</a><a href="#metodo">Método</a><a href="#operacao">Operação</a><a href="#contato">Contato</a></div>
-  <div class="nr"><span class="clock"><i></i>Porto Alegre · <span id="hora">--:--</span></span><a class="btn s" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-</div></nav>
-
-<header class="hero w" id="topo">
-  <div class="meta"><span>análise de dados · logística e operações</span><span>github.com/luiscarlossoarespro-cyber</span></div>
-  <div class="grid-card">
-    <div class="grid-top"><span><b id="h-ped">96.432</b> entregas analisadas no projeto principal</span><span class="scale">no prazo <i style="background:var(--cell0)"></i><i style="background:var(--cell1)"></i><i style="background:var(--cell2)"></i><i style="background:var(--cell3)"></i><i style="background:var(--cell4)"></i> atraso</span></div>
-    <canvas id="hero-cv" aria-label="Grade de células de dados formando o nome Luis Carlos"></canvas>
-    <div class="grid-foot"><span>cada célula é um recorte de dados · passe o mouse para destacar</span><span>role para explorar ↓</span></div>
-  </div>
-  <div class="hero-row">
-    <div><div class="kk">// Analista de dados · logística</div><h1>Dados que viram <span>decisão</span> na operação.</h1></div>
-    <div>
-      <p class="lead">Sou <b>Luis Carlos Machado Soares</b>. São <b>16 anos de carreira em operações e logística</b>, de conferência de cargas a líder de equipe. Hoje uso <b>SQL, Python, estatística e dashboards</b> para mostrar onde a operação perde tempo e dinheiro, e o que fazer a respeito.</p>
-      <div class="btns"><a class="btn p" href="#projetos">Ver projetos ↓</a><a class="btn" href="https://luiscarlossoarespro-cyber.github.io/olist-logistica-entregas/dashboard/" target="_blank" rel="noopener">Dashboard ao vivo ↗</a><a class="btn" href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">GitHub ↗</a><a class="btn" href="CV_LUIS_CARLOS_MACHADO_SOARES_Analista_de_Logistica.pdf" target="_blank" rel="noopener">Ver currículo ↗</a></div>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="st"><b data-n="16">16</b><span>anos em operações e logística</span></div>
-    <div class="st"><b id="n-proj" data-n="4">4</b><span>projetos de dados publicados</span></div>
-    <div class="st"><b id="n-repos" data-n="6">6</b><span>repositórios públicos no GitHub</span></div>
-    <div class="st"><b data-n="125917">125.917</b><span>registros reais analisados (Olist e FDA)</span></div>
-  </div>
-  <div class="tk" aria-label="Últimas atualizações no GitHub"><div class="tk-in" id="tk"></div></div>
+<div class="bar"><div class="in">
+<div class="brand"><span class="mono">LC</span>Luis Carlos Machado Soares</div>
+<nav><a href="#metodo">Método</a><a href="#projetos">Projetos</a><a href="#indicadores">Indicadores</a><a href="#formacao">Formação</a><a href="#contato">Contato</a></nav>
+</div></div>
+<main class="in">
+<header class="hero">
+<div>
+<div class="eyebrow">Logística · estoque · análise de dados</div>
+<h1>Do recebimento ao indicador.</h1>
+<p class="lead">Passei mais de 16 anos conferindo carga, validade e estoque. Aprendi que um erro na conferência sempre aparece lá na frente. Hoje levo esse mesmo cuidado para os dados.</p>
+<p class="lead2">Cada projeto começa por uma pergunta que um gestor faria, passa por uma conferência da base antes de qualquer cálculo e termina dizendo o que os dados não conseguem responder.</p>
+<div class="chips"><span class="chip">Analista de Logística</span><span class="chip">Analista de Estoque</span><span class="chip">Analista de Indicadores</span></div>
+<div class="btns"><a class="btn p" href="#projetos">Ver os projetos</a><a class="btn s" href="https://www.linkedin.com/in/luiscarlos-log/">LinkedIn</a><a class="btn s" href="https://github.com/luiscarlossoarespro-cyber">GitHub</a></div>
+</div>
+<aside class="sum" aria-label="Resumo em 30 segundos">
+<h3>Resumo em 30 segundos</h3>
+<dl>
+<div><dt>Vindo de</dt><dd>Recebimento, conferência, estoque e inventário (16+ anos)</dd></div>
+<div><dt>Indo para</dt><dd>Analista de Logística, Estoque e Indicadores</dd></div>
+<div><dt>Como trabalho</dt><dd>Pergunta do gestor, auditoria da base, limitações escritas</dd></div>
+<div><dt>Ferramentas</dt><dd>Excel, SQL, Python, Google Sheets, Tableau, dashboards web</dd></div>
+</dl>
+<div class="big">
+<div><b>5</b><span>projetos, 3 em destaque</span></div>
+<div><b>126.917</b><span>registros analisados nos 3 destaques</span></div>
+<div><b>83</b><span>checagens de qualidade (FDA e Olist)</span></div>
+</div>
+</aside>
 </header>
-
-<main class="w">
-  <div class="lay">
-  <aside class="aside"><div class="stick"><div class="pix"><canvas id="sec-cv" aria-hidden="true"></canvas></div><div class="commit"><span id="cm-msg"><b>SELECT</b> <em>projetos</em></span><span id="cm-n">01 / 05</span></div></div></aside>
-  <div class="col">
-  <div class="sec" id="projetos">
-    <div>
-      <div class="lab rv">01 / projetos <code>SELECT * FROM projetos ORDER BY impacto DESC;</code></div>
-      <h2 class="rv">Perguntas de negócio, respondidas com dados</h2>
-      <p class="sub rv">Cada projeto parte de uma pergunta real e termina em uma recomendação. O principal é da minha área: logística.</p>
-      <div class="pj rv"><div class="pj-list" id="pj-list" role="tablist" aria-label="Projetos"></div><article class="pj-d" id="pj-d" role="tabpanel"></article></div>
-    </div>
-  </div>
-
-  <div class="sec" id="ferramentas">
-    <div>
-      <div class="lab rv">02 / ferramentas <code>SELECT ferramenta, nivel FROM stack;</code></div>
-      <h2 class="rv">Com o que eu trabalho</h2>
-      <p class="sub rv">Separado entre o que já uso nos projetos publicados e o que ainda estou estudando.</p>
-      <div class="tools">
-        <div class="tl rv"><h3>Dados e análise</h3><p>Da base bruta à tabela pronta para decisão</p><div class="chips"><span>SQL (DuckDB)</span><span>Python</span><span>Pandas</span><span>Excel avançado</span><span>Google Sheets</span></div></div>
-        <div class="tl rv"><h3>Estatística e modelos</h3><p>Para separar sinal de ruído</p><div class="chips"><span>Intervalo de confiança</span><span>Regressão logística</span><span>Testes de hipótese</span><span>scikit-learn</span><span>statsmodels</span></div></div>
-        <div class="tl rv"><h3>Visualização</h3><p>Gráfico que se entende sem explicação</p><div class="chips"><span>Dashboards web</span><span>Matplotlib</span><span>Tableau Public</span><span class="f">Power BI</span></div></div>
-        <div class="tl rv"><h3>Operação e logística</h3><p>O contexto que dá sentido aos números</p><div class="chips"><span>Conferência e inventário</span><span>KPIs de operação</span><span>PDL e WMS</span><span>Kaizen</span><span>Liderança de equipe</span></div></div>
-        <div class="tl rv"><h3>Produtividade e IA</h3><p>Uso prático no dia a dia</p><div class="chips"><span>IA generativa (Claude)</span><span>Git e GitHub</span><span>GitHub Pages</span><span class="f">Scrum</span></div></div>
-        <div class="tl rv"><h3>Formação em andamento</h3><p>Base acadêmica</p><div class="chips"><span>Administração de Empresas</span><span>Processos Gerenciais</span><span>Técnico em Análise de Dados</span></div></div>
-      </div>
-      <div class="legend rv"><span style="--c:rgba(111,168,255,.5)">em uso nos projetos</span><span style="--c:rgba(245,184,90,.5)">em formação</span></div>
-    </div>
-  </div>
-
-  <div class="sec" id="metodo">
-    <div>
-      <div class="lab rv">03 / método <code>WITH pergunta AS (...) SELECT decisao;</code></div>
-      <h2 class="rv">Como eu resolvo um problema com dados</h2>
-      <p class="sub rv">O mesmo raciocínio de quem confere uma carga: nada passa sem checagem, e todo número precisa levar a uma ação.</p>
-      <div class="steps">
-        <div class="sp rv"><b>01</b><strong>Pergunta de negócio</strong><span>Qual decisão precisa ser tomada?</span></div>
-        <div class="sp rv"><b>02</b><strong>Auditoria dos dados</strong><span>Nulos, duplicados, datas impossíveis</span></div>
-        <div class="sp rv"><b>03</b><strong>Base analítica</strong><span>SQL com uma linha por fato analisado</span></div>
-        <div class="sp rv"><b>04</b><strong>Análise</strong><span>Indicadores com margem de erro e controles</span></div>
-        <div class="sp rv"><b>05</b><strong>Comunicação</strong><span>Dashboard e relatório para quem decide</span></div>
-        <div class="sp rv"><b>06</b><strong>Recomendação</strong><span>Ação, impacto estimado e limites</span></div>
-      </div>
-      <div class="eng rv"><h3>Boas práticas de engenharia de dados que aplico</h3><ul>
-        <li>Código versionado no GitHub, em etapas numeradas</li>
-        <li>Um comando refaz o projeto inteiro do zero</li>
-        <li>Auditoria de qualidade antes de qualquer número</li>
-        <li>Números do relatório conferidos por script</li>
-        <li>Validação temporal no modelo (sem "vazar" o futuro)</li>
-        <li>Documentação: relatório técnico e dicionário de dados</li>
-        <li>Planilha de tratamento conferida contra o arquivo original (15 de 15 indicadores no projeto FDA)</li>
-        <li>Limitações de cada projeto escritas no próprio relatório, sem esconder o que a base não mostra</li>
-        <li>Código aberto e vídeo de demonstração nos projetos de dados mais recentes</li>
-      </ul></div>
-    </div>
-  </div>
-
-  <div class="sec" id="operacao">
-    <div>
-      <div class="lab rv">04 / operação <code>SELECT * FROM trajetoria ORDER BY data DESC;</code></div>
-      <h2 class="rv">Operação na prática, dados como próximo passo</h2>
-      <p class="sub rv">Antes de analisar dados de logística, eu vivi a operação que os gera.</p>
-      <div class="ops">
-        <div class="op rv"><b>100+</b><span>paletes conferidos por dia</span></div>
-        <div class="op rv"><b>29</b><span>caminhões carregados por dia, até 40 no verão</span></div>
-        <div class="op rv"><b>50</b><span>pessoas coordenadas como líder informal</span></div>
-        <div class="op rv"><b>+80</b><span>colaboradores treinados</span></div>
-      </div>
-      <div class="tline">
-        <div class="ti rv"><time>dez/2021 – jun/2026</time><h3>Coca-Cola FEMSA · de Ajudante Operacional a Conferente</h3><p>Ajudante Operacional, Assistente Geral, Assistente de Operações e Conferente. Inventário diário do pick e geral quinzenal, alinhamento da montagem do pick e reuniões de melhoria contínua com a equipe.</p></div>
-        <div class="ti rv"><time>2007 – 2021</time><h3>Estoque, operações e vendas</h3><p>Almoxarifado (Zaffari), coleta urbana (DMLU), manutenção e serviços gerais (Garagem Paineira) e promoção de vendas (RBS/Zero Hora).</p></div>
-      </div>
-    </div>
-  </div>
-
-  </div></div>
-  <section class="ct rv" id="contato">
-    <div class="ct-g">
-      <div>
-        <div class="lab">05 / contato <code>INSERT INTO conversas VALUES ('você');</code></div>
-        <h2>Sua operação gera dados. Eu sei <span>o que eles estão dizendo.</span></h2>
-        <p class="sub">Busco minha próxima oportunidade em <b>análise de dados e logística</b>. Levo para o time o que poucos analistas têm: <b>16 anos dentro da operação</b> que gera os números.</p>
-        <ul class="gets">
-          <li><i>01</i><div>Entendo o processo antes da planilha<span>Conferência, inventário, carregamento e equipe: eu vivi cada etapa.</span></div></li>
-          <li><i>02</i><div>Análise que vira ação<span>Do SQL ao dashboard, sempre terminando em uma recomendação clara.</span></div></li>
-          <li><i>03</i><div>Números que você pode conferir<span>Auditoria dos dados, método documentado e código aberto no GitHub.</span></div></li>
-        </ul>
-        <div class="btns">
-          <a class="btn p lg" href="https://www.linkedin.com/in/luiscarlos-log/" target="_blank" rel="noopener">Conversar no LinkedIn ↗</a>
-          <a class="btn lg" href="CV_LUIS_CARLOS_MACHADO_SOARES_Analista_de_Logistica.pdf" target="_blank" rel="noopener">Ver currículo ↗</a>
-          <button class="btn lg copy" id="copy" type="button" data-mail="luiscarlos.soarespro@gmail.com">luiscarlos.soarespro@gmail.com · copiar</button>
-        </div>
-      </div>
-      <div class="card" aria-label="Resumo do perfil">
-        <div class="card-h"><i></i><i></i><i></i>perfil.sql</div>
-        <pre><b>SELECT</b> * <b>FROM</b> profissionais
-<b>WHERE</b> nome = <em>'Luis Carlos Machado Soares'</em>;</pre>
-        <dl class="rows">
-          <div class="row"><dt>foco</dt><dd>Análise de dados aplicada à logística</dd></div>
-          <div class="row"><dt>base</dt><dd>16 anos em operações e logística</dd></div>
-          <div class="row"><dt>ferramentas</dt><dd>SQL · Python · estatística · dashboards</dd></div>
-          <div class="row"><dt>projeto_chave</dt><dd><a href="https://luiscarlossoarespro-cyber.github.io/olist-logistica-entregas/dashboard/" target="_blank" rel="noopener">96.432 entregas analisadas ↗</a></dd></div>
-          <div class="row"><dt>projeto_recente</dt><dd><a href="https://luiscarlossoarespro-cyber.github.io/conformidade-recebimento-fda/dashboard/" target="_blank" rel="noopener">29.485 recolhimentos da FDA ↗</a></dd></div>
-          <div class="row"><dt>cidade</dt><dd>Porto Alegre/RS</dd></div>
-          <div class="row"><dt>código</dt><dd><a href="https://github.com/luiscarlossoarespro-cyber" target="_blank" rel="noopener">6 repositórios públicos ↗</a></dd></div>
-        </dl>
-        <div class="card-f"><i></i>aberto a oportunidades em dados e logística</div>
-      </div>
-    </div>
-  </section>
+<section id="metodo">
+<div class="sec-head"><h2>Como eu trabalho</h2><p>O mesmo roteiro em todos os projetos, o que eu faria no dia a dia de uma operação.</p></div>
+<div class="grid4">
+<div class="mini"><div class="num">01</div><b>Começo pela pergunta</b><span>Antes dos gráficos, escrevo a pergunta que o gestor precisa responder.</span></div>
+<div class="mini"><div class="num">02</div><b>Confiro a base</b><span>Duplicados, vazios e contas que não batem. Só depois calculo.</span></div>
+<div class="mini"><div class="num">03</div><b>Mostro o limite</b><span>Cada projeto tem uma seção "Limitações" com o que não dá para afirmar.</span></div>
+<div class="mini"><div class="num">04</div><b>Digo o que é IA e o que é meu</b><span>Ferramentas usadas e o que eu decidi, revisei e conferi, de forma clara.</span></div>
+</div>
+</section>
+<section id="projetos">
+<div class="sec-head"><h2>Projetos</h2><p>Cinco projetos: três em destaque, com perguntas de gestão e números conferidos, e dois estudos complementares. Cada um diz de onde vêm os dados.</p></div>
+<article class="case">
+<div class="case-h"><span class="n">CASO 01</span><div class="tags"><span class="tag w">Mais próximo das vagas de logística</span><span class="tag">Dados públicos reais · openFDA</span></div></div>
+<div class="case-b">
+<div>
+<h3>Conformidade no recebimento</h3>
+<p class="q">Que problemas levam um alimento a ser recolhido, e o que a conferência consegue perceber?</p>
+<div class="rows">
+<div class="row"><div class="k">O que fiz</div><div>Auditei a base, tratei sem corrigir por suposição (o que não dava para provar ficou marcado) e conferi minha planilha contra o arquivo original: 15 de 15 indicadores batem.</div></div>
+<div class="row"><div class="k">O que achei</div><div>75% dos recolhimentos por contaminação microbiológica são de risco sério. A FDA leva 38 dias (mediana) para classificar o risco.</div></div>
+<div class="row"><div class="k">Eu e a IA</div><div>A pergunta e a leitura para o recebimento são minhas. O projeto foi feito com apoio de IA, e os números foram extraídos e conferidos na base.</div></div>
+</div>
+</div>
+<div class="viz">
+<div class="t">Causa dos recolhimentos</div>
+<div class="kpis"><div class="kpi"><b>29.485</b><span>recolhimentos da FDA</span></div><div class="kpi"><b>61</b><span>checagens de qualidade</span></div></div>
+<div class="stack" role="img" aria-label="44,1% contaminação microbiológica e 55,9% demais causas"><i style="width:44.1%;background:var(--bar)"></i><i style="width:55.9%;background:var(--bar2)"></i></div>
+<div class="leg"><span><span class="dot" style="background:var(--bar)"></span>Microbiológica 44,1%</span><span><span class="dot" style="background:var(--bar2)"></span>Demais causas 55,9%</span></div>
+<div class="src">Fonte: openFDA, Food Enforcement, domínio público (CC0).</div>
+</div>
+<div class="decide"><b>Ajuda a decidir:</b> dar mais peso a lote e validade na conferência, porque a contaminação não aparece na inspeção visual. É uma leitura minha, não um dado da FDA.</div>
+<div class="foot"><div class="tools"><span>Python</span><span>Pandas</span><span>Google Sheets</span><span>Dashboard web</span></div><div class="btns" style="margin:0"><a class="btn p" href="https://luiscarlossoarespro-cyber.github.io/conformidade-recebimento-fda/dashboard/">Abrir o dashboard</a><a class="btn s" href="https://github.com/luiscarlossoarespro-cyber/conformidade-recebimento-fda">Ver no GitHub</a></div></div>
+</div>
+</article>
+<article class="case">
+<div class="case-h"><span class="n">CASO 02</span><div class="tags"><span class="tag">Dados públicos reais · Olist</span></div></div>
+<div class="case-b">
+<div>
+<h3>Entregas: onde e por que atrasam</h3>
+<p class="q">Por que o pedido chegou atrasado, e onde dá para agir antes?</p>
+<div class="rows">
+<div class="row"><div class="k">O que fiz</div><div>22 checagens de qualidade, SQL (DuckDB) juntando 9 tabelas, estatística e um modelo de risco testado em meses que ele não tinha visto.</div></div>
+<div class="row"><div class="k">O que achei</div><div>Só a rota SP → RJ responde por 17,6% dos atrasos. RJ e Nordeste têm cerca de 3 vezes a chance de atraso de SP, mesmo com a mesma distância.</div></div>
+<div class="row"><div class="k">Eu e a IA</div><div>A pergunta e a leitura para a operação são minhas. O projeto foi feito com apoio de IA, e os números foram extraídos e conferidos na base.</div></div>
+</div>
+</div>
+<div class="viz">
+<div class="t">Entregas no prazo</div>
+<div class="kpis"><div class="kpi"><b>96.432</b><span>pedidos entregues</span></div><div class="kpi"><b>49,5%</b><span>dos atrasos nos 10% de maior risco</span></div></div>
+<div class="stack" role="img" aria-label="93,2% no prazo e 6,8% com atraso"><i style="width:93.2%;background:var(--bar)"></i><i style="width:6.8%;background:var(--warm)"></i></div>
+<div class="leg"><span><span class="dot" style="background:var(--bar)"></span>No prazo 93,2%</span><span><span class="dot" style="background:var(--warm)"></span>Atrasados 6,8%</span></div>
+<div class="src">Fonte: base pública da Olist, pedidos entregues de 2016 a 2018.</div>
+</div>
+<div class="decide"><b>Ajuda a decidir:</b> rever o prazo prometido nas rotas críticas e acompanhar de perto os pedidos de maior risco, em vez de olhar tudo igual.</div>
+<div class="foot"><div class="tools"><span>SQL (DuckDB)</span><span>Python</span><span>Estatística</span><span>Dashboard web</span></div><div class="btns" style="margin:0"><a class="btn p" href="https://luiscarlossoarespro-cyber.github.io/olist-logistica-entregas/dashboard/">Abrir o dashboard</a><a class="btn s" href="https://github.com/luiscarlossoarespro-cyber/olist-logistica-entregas">Ver no GitHub</a></div></div>
+</div>
+</article>
+<article class="case">
+<div class="case-h"><span class="n">CASO 03</span><div class="tags"><span class="tag">Base de exemplo · fonte a confirmar</span><span class="tag">Projeto mais recente</span></div></div>
+<div class="case-b">
+<div>
+<h3>Painel estratégico de vendas</h3>
+<p class="q">Quanto vendemos, onde a margem é melhor e quem concentra a receita?</p>
+<div class="rows">
+<div class="row"><div class="k">O que fiz</div><div>Defini o objetivo e o modelo do painel, aprovei as perguntas, revisei cada tela e cada número contra a base e pedi correções até os filtros baterem.</div></div>
+<div class="row"><div class="k">Ferramentas</div><div>Excel, HTML, CSS e JavaScript, GitHub Pages e Claude (IA da Anthropic), que escreveu o código e propôs as perguntas a partir do meu pedido.</div></div>
+<div class="row"><div class="k">Limitações</div><div>Cada país tem um único gerente, então não dá para separar o efeito do gerente do efeito do país.</div></div>
+</div>
+</div>
+<div class="viz">
+<div class="t">Receita por país (% do total)</div>
+<div class="kpis"><div class="kpi"><b>€ 113,4 M</b><span>receita em 1.000 pedidos</span></div><div class="kpi"><b>64,7%</b><span>da receita nos 3 maiores gerentes</span></div></div>
+<div class="hb">
+<div class="r"><span>Portugal</span><div class="track"><div class="fillb" style="width:100%"></div></div><span class="v">24,5%</span></div>
+<div class="r"><span>França</span><div class="track"><div class="fillb" style="width:93%"></div></div><span class="v">22,8%</span></div>
+<div class="r"><span>Suécia</span><div class="track"><div class="fillb" style="width:70.6%"></div></div><span class="v">17,3%</span></div>
+<div class="r"><span>Reino Unido</span><div class="track"><div class="fillb" style="width:43.7%"></div></div><span class="v">10,7%</span></div>
+<div class="r"><span>Outros 11</span><div class="track"><div class="fillb" style="width:100%;background:var(--bar2)"></div></div><span class="v">24,7%</span></div>
+</div>
+<div class="src">Fonte: base de exemplo de 1.000 pedidos (2019 e 2020). Barras na mesma escala.</div>
+</div>
+<div class="foot"><div class="tools"><span>Excel</span><span>HTML · CSS · JavaScript</span><span>GitHub Pages</span></div><div class="btns" style="margin:0"><a class="btn p" href="https://luiscarlossoarespro-cyber.github.io/analise-vendas-online/">Abrir o painel</a><a class="btn s" href="https://github.com/luiscarlossoarespro-cyber/analise-vendas-online">Ver no GitHub</a></div></div>
+</div>
+</article>
+<div class="sec-head" style="margin-top:30px"><h3>Estudos complementares</h3></div>
+<div class="two">
+<div class="mini"><b>Catálogo Netflix</b><span>Estudo guiado, base de curso. Filmes e séries, países e anos de lançamento, em Tableau Public.</span></div>
+<div class="mini"><b>Controle Pessoal</b><span>Projeto próprio, com dados fictícios. Fluxo de caixa, auditoria de lançamentos e plano de decisões, em Google Sheets e dashboard web.</span></div>
+</div>
+</section>
+<section id="indicadores">
+<div class="sec-head"><h2>Indicadores de logística</h2><p>O que eu já calculo e o que ainda vem. Sem prometer além do que está feito.</p></div>
+<div class="table"><table>
+<tr><th>Indicador</th><th>O que mede</th><th>Situação</th><th>Onde aparece</th></tr>
+<tr><td>OTD</td><td>Entregas no prazo</td><td class="s-ok">Calculado</td><td>Olist</td></tr>
+<tr><td>Lead time</td><td>Tempo do processo</td><td class="s-ok">Calculado</td><td>Olist e FDA (tempo até classificar)</td></tr>
+<tr><td>Produtividade</td><td>Volume por período</td><td class="s-p">Parcial</td><td>Volume mensal no Olist; por pessoa ou turno, ainda não</td></tr>
+<tr><td>OTIF</td><td>Pedido completo e no prazo</td><td class="s-n">Em desenvolvimento</td><td>Precisa de pedido x entregue</td></tr>
+<tr><td>Acuracidade de estoque</td><td>Físico x sistema</td><td class="s-n">Em desenvolvimento</td><td>Precisa de contagem física</td></tr>
+<tr><td>Taxa de avarias</td><td>Produtos danificados</td><td class="s-n">Em desenvolvimento</td><td>Precisa de registro de avarias</td></tr>
+</table></div>
+</section>
+<section id="formacao">
+<div class="sec-head"><h2>Formação continuada</h2><p>O que estou estudando, com a situação real de cada um.</p></div>
+<div class="form">
+<div><b>Dados com Python e IA</b><small>Santander Open Academy · selecionado</small></div>
+<div><b>Imersão Agentes de IA na Prática</b><small>Daxus · 8 h · concluída</small></div>
+<div><b>Finanças com IA</b><small>Negócio em Dia · concluída</small></div>
+<div><b>SCRUM: Gerenciando Projetos com Agilidade</b><small>IFRS · iniciado</small></div>
+<div><b>NR-11: operação com transpaleteira</b><small>Reciclagem · 8 h · concluída</small></div>
+</div>
+</section>
+<section>
+<p class="quote">"Na logística, aprendi que um erro na conferência sempre aparece lá na frente. Levei essa mesma lógica para os dados."</p>
+</section>
+<section id="contato">
+<div class="contact">
+<h2>Vamos conversar</h2>
+<p>Se a sua operação precisa de alguém que confere antes de liberar e explica o número em linguagem simples, vou gostar de falar com você.</p>
+<div class="btns" style="margin:0"><a class="btn p" href="https://www.linkedin.com/in/luiscarlos-log/">Falar pelo LinkedIn</a><a class="btn s" href="https://github.com/luiscarlossoarespro-cyber">Ver o GitHub</a><a class="btn s" href="CV_LUIS_CARLOS_MACHADO_SOARES_Analista_de_Logistica.pdf">Currículo em PDF</a></div>
+</div>
+</section>
+<footer>
+<div>Luis Carlos Machado Soares · Porto Alegre, RS</div>
+<div>Todos os números vêm das bases citadas em cada projeto. O que é interpretação minha está dito como interpretação.</div>
+</footer>
 </main>
-<footer><div class="w"><span>© 2026 Luis Carlos Machado Soares · Porto Alegre/RS</span><span>feito com dados reais e muitos commits</span></div></footer>
-
-<script src="projetos.js"></script>
-<script>
-(function(){
-"use strict";
-const RED=matchMedia("(prefers-reduced-motion: reduce)").matches;
-const $=id=>document.getElementById(id);
-const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const CELL=[css("--cell0"),css("--cell1"),css("--cell2"),css("--cell3"),css("--cell4")];
-
-/* relógio de Porto Alegre */
-function hora(){try{$("hora").textContent=new Intl.DateTimeFormat("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}).format(new Date())}catch(e){}}
-hora();setInterval(hora,30000);
-
-/* barra de progresso + menu ativo */
-const secs=["projetos","ferramentas","metodo","operacao","contato"];
-addEventListener("scroll",()=>{const h=document.documentElement;$("bar").style.width=(100*scrollY/Math.max(1,h.scrollHeight-innerHeight))+"%";
-  let at="";secs.forEach(s=>{const e=$(s);if(e&&e.getBoundingClientRect().top<innerHeight*.4)at=s});
-  document.querySelectorAll("#nl a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+at))},{passive:true});
-
-/* ---------- fonte 5x7 para desenhar o nome na grade ---------- */
-const F={A:["01110","10001","10001","11111","10001","10001","10001"],C:["01111","10000","10000","10000","10000","10000","01111"],I:["11111","00100","00100","00100","00100","00100","11111"],L:["10000","10000","10000","10000","10000","10000","11111"],O:["01110","10001","10001","10001","10001","10001","01110"],R:["11110","10001","10001","11110","10100","10010","10001"],S:["01111","10000","10000","01110","00001","00001","11110"],U:["10001","10001","10001","10001","10001","10001","01110"]," ":["000","000","000","000","000","000","000"]};
-function texto(t){const cols=[];for(const ch of t){const g=F[ch]||F[" "];for(let x=0;x<g[0].length;x++)cols.push(g.map(r=>r[x]==="1"));cols.push(new Array(7).fill(false))}return cols}
-
-/* grade do topo: o nome em células, com ruído de "atividade" e destaque no mouse */
-const hc=$("hero-cv"),hx=hc.getContext("2d");
-const TXT=texto("LUIS CARLOS");const HC=Math.max(TXT.length+8,64),HR=13,OX=Math.floor((HC-TXT.length)/2),OY=3;
-let hv=[],ht=[],mouse={x:-99,y:-99};
-for(let i=0;i<HC*HR;i++){hv.push(0);ht.push(0)}
-function alvoHero(){for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];
-  ht[y*HC+x]=on?4:(Math.random()<.10?(Math.random()<.6?1:2):0)}}
-alvoHero();
-function tamHero(){const w=hc.parentElement.clientWidth-36;const cs=Math.max(6,Math.floor(w/HC));const k=Math.max(2,devicePixelRatio||1);hc.width=cs*HC*k;hc.height=cs*HR*k;hc.style.width=(cs*HC)+"px";hc.style.height=(cs*HR)+"px";hc.style.margin="0 auto";hc._cs=cs}
-tamHero();addEventListener("resize",tamHero);
-hc.addEventListener("mousemove",e=>{const r=hc.getBoundingClientRect(),cs=r.width/HC;mouse={x:Math.floor((e.clientX-r.left)/cs),y:Math.floor((e.clientY-r.top)/cs)}});
-hc.addEventListener("mouseleave",()=>mouse={x:-99,y:-99});
-hc.addEventListener("click",()=>alvoHero());
-let first=!RED;
-function drawHero(){const cs=hc.width/HC,g=Math.round(cs*.2),r=cs*.2,sz=Math.round(cs)-g;hx.clearRect(0,0,hc.width,hc.height);
-  for(let y=0;y<HR;y++)for(let x=0;x<HC;x++){const i=y*HC+x;let t=ht[i];const d=Math.hypot(x-mouse.x,y-mouse.y);if(d<2.2)t=Math.max(t,4-d);
-    hv[i]+=(t-hv[i])*(first?.08:.22);const lv=Math.max(0,Math.min(4,Math.round(hv[i])));
-    const px=Math.round(x*cs+g/2),py=Math.round(y*cs+g/2);
-    if(lv===4){hx.shadowColor="rgba(120,170,255,.75)";hx.shadowBlur=cs*.55}else{hx.shadowBlur=0}
-    hx.fillStyle=CELL[lv];hx.beginPath();if(hx.roundRect)hx.roundRect(px,py,sz,sz,r);else hx.rect(px,py,sz,sz);hx.fill()}
-  hx.shadowBlur=0;requestAnimationFrame(drawHero)}
-if(RED){for(let i=0;i<hv.length;i++)hv[i]=ht[i]}
-requestAnimationFrame(drawHero);setTimeout(()=>first=false,1800);
-if(!RED)setInterval(()=>{for(let k=0;k<6;k++){const x=Math.floor(Math.random()*HC),y=Math.floor(Math.random()*HR),tx=x-OX,ty=y-OY;const on=tx>=0&&tx<TXT.length&&ty>=0&&ty<7&&TXT[tx][ty];if(!on)ht[y*HC+x]=Math.random()<.6?0:(Math.random()<.6?1:2)}},700);
-
-/* ---------- grade lateral que muda de desenho por seção ---------- */
-const SC=28,SR=28,sc=$("sec-cv"),sx=sc.getContext("2d");
-const P={
- projetos:["............................","............................","........................##..","........................##..","....................##..##..","....................##..##..","................##..##..##..","................##..##..##..","............##..##..##..##..","............##..##..##..##..","........##..##..##..##..##..","........##..##..##..##..##..","....##..##..##..##..##..##..","....##..##..##..##..##..##..","....##..##..##..##..##..##..","...#######################..","............................","..........##########........","..........#........#........","..........#.SELECT.#........","..........#........#........","..........##########........","............................","............................","............................","............................","............................","............................"],
- ferramentas:["............................","............................","..........########..........","........###......###........",".......##..........##.......","......##....####....##......","......#....##..##....#......","......#....#....#....#......","......#....##..##....#......","......##....####....##......",".......##..........##.......","........###......###........","..........#########.........","..................###.......","...................###......","....................###.....",".....................###....","......................###...","............................","............................","....###.....###.....###.....","....###.....###.....###.....","............................","............................","............................","............................","............................","............................"],
- metodo:["............................","............................","...######...................","...#....#...................","...######...................","......#.....................","......#.....................","......####.....######.......",".........#.....#....#.......",".........######......#......","...............######.......","....................#.......","....................#.......","..........######....#.......","..........#....#.####.......","..........######............",".............#..............",".............#..............","...........#####............","..........#.....#...........","..........#..✓..#...........","..........#.....#...........","...........#####............","............................","............................","............................","............................","............................"],
- operacao:["............................","............................","............................","............................","...............#######......","...............#.....##.....","...............#.....#.#....","...############......#..#...","...#..........#......####...","...#..........#.........#...","...#..........#.........#...","...#..........#.........#...","...#..........###########...","...##########################","....###..............###....","...#####............#####...","...#####............#####...","....###..............###....","............................","............................","...#####....#####....#####..","...#...#....#...#....#...#..","...#####....#####....#####..","............................","............................","............................","............................","............................"],
- contato:["............................","............................","............................","....####################....","....##................##....","....#.#..............#.#....","....#..#............#..#....","....#...#..........#...#....","....#....#........#....#....","....#.....#......#.....#....","....#......######......#....","....#..................#....","....#..................#....","....####################....","............................","............................","............................","..........#......#..........","..........#......#..........","...........######...........","............................","............................","............................","............................","............................","............................","............................","............................"]
-};
-const MSG={projetos:["SELECT","projetos","01 / 05"],ferramentas:["SELECT","ferramentas","02 / 05"],metodo:["WITH","metodo","03 / 05"],operacao:["SELECT","trajetoria","04 / 05"],contato:["INSERT","conversas","05 / 05"]};
-let sv=new Array(SC*SR).fill(0),st=new Array(SC*SR).fill(0),atual="";
-function alvoSec(nome){atual=nome;const p=P[nome];for(let y=0;y<SR;y++)for(let x=0;x<SC;x++){const ch=(p[y]||"")[x]||".";st[y*SC+x]=ch==="."?(Math.random()<.05?1:0):(ch==="#"?3+Math.random():4)}
-  const m=MSG[nome];$("cm-msg").innerHTML=`<b>${m[0]}</b> <em>${m[1]}</em>`;$("cm-n").textContent=m[2]}
-function tamSec(){const w=sc.parentElement.clientWidth-28;const cs=Math.floor(w/SC);sc.width=cs*SC*devicePixelRatio;sc.height=cs*SR*devicePixelRatio;sc.style.height=(cs*SR)+"px"}
-tamSec();addEventListener("resize",tamSec);alvoSec("projetos");
-function drawSec(){const cs=sc.width/SC,g=cs*.16,r=cs*.2;sx.clearRect(0,0,sc.width,sc.height);
-  for(let i=0;i<SC*SR;i++){sv[i]+=(st[i]-sv[i])*(RED?1:.09);const lv=Math.max(0,Math.min(4,Math.round(sv[i])));sx.fillStyle=CELL[lv];
-    const x=i%SC,y=Math.floor(i/SC),px=x*cs+g/2,py=y*cs+g/2,s=cs-g;sx.beginPath();if(sx.roundRect)sx.roundRect(px,py,s,s,r);else sx.rect(px,py,s,s);sx.fill()}
-  requestAnimationFrame(drawSec)}
-requestAnimationFrame(drawSec);
-addEventListener("scroll",()=>{let at="projetos";secs.forEach(s=>{const e=$(s);if(e&&e.getBoundingClientRect().top<innerHeight*.5)at=s});if(at!==atual)alvoSec(at)},{passive:true});
-
-/* ---------- projetos: lista + detalhe ---------- */
-const PJ=window.PROJETOS||[];
-$("n-proj").textContent=PJ.length;$("n-proj").dataset.n=PJ.length;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-$("pj-list").innerHTML=PJ.map((p,i)=>`<button class="pj-it" role="tab" type="button" data-i="${i}" aria-selected="${i===0}"><b>${esc(p.titulo)}</b><span>${esc(p.area)} · ${esc(p.tipo)}</span></button>`).join("");
-function mostrar(i){const p=PJ[i];const d=$("pj-d");d.classList.remove("fade");void d.offsetWidth;d.classList.add("fade");
-  d.innerHTML=`<a class="cap" href="${esc(p.links[0].u)}" target="_blank" rel="noopener"><img src="${esc(p.capa)}" alt="Tela do projeto ${esc(p.titulo)}" loading="lazy"></a>
-  <h3>${esc(p.titulo)}</h3><div class="ty">${esc(p.tipo)}</div><p>${esc(p.resumo)}</p><p class="q">Pergunta: ${esc(p.pergunta)}</p>
-  <div class="mini">caminho dos dados</div><div class="flow">${p.fluxo.map(f=>`<span>${esc(f)}</span>`).join('<i>→</i>')}</div>
-  <div class="mini">destaques</div><ul>${p.destaques.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
-  ${p.decisao?`<div class="mini">decisão que ajuda a tomar</div><p>${esc(p.decisao)}</p>`:""}
-  ${p.limites?`<div class="mini">limitações</div><ul>${p.limites.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
-  <div class="mini">ferramentas</div><div class="chips">${p.ferramentas.map(x=>`<span>${esc(x)}</span>`).join("")}</div>
-  <div class="btns">${p.links.map(k=>`<a class="btn s${k.p?" p":""}" href="${esc(k.u)}" target="_blank" rel="noopener">${esc(k.r)} ↗</a>`).join("")}</div>`;
-  document.querySelectorAll(".pj-it").forEach(b=>b.setAttribute("aria-selected",+b.dataset.i===i))}
-$("pj-list").addEventListener("click",e=>{const b=e.target.closest(".pj-it");if(b)mostrar(+b.dataset.i)});
-mostrar(0);
-
-/* ---------- últimas atualizações do GitHub (ao vivo, com reserva fixa) ---------- */
-const RESERVA=[["olist-logistica-entregas","Análise de atrasos de entrega no e-commerce brasileiro (Olist) com SQL e Python"],["luiscarlossoarespro-cyber.github.io","Portfólio de Análise de Dados"],["erp-financeiro-pessoal","Dashboard estratégico de finanças pessoais"],["analise-vendas-online","Dashboard interativo de vendas (Aurora Comercial)"],["analise-catalogo-netflix","Dashboard no Tableau Public sobre o catálogo da Netflix"]];
-function ticker(itens){const h=itens.map(([n,d,dt])=>`<span>${dt?`<b>${dt}</b> `:""}push(<em>${esc(n)}</em>): ${esc(d||"")}</span>`).join("");$("tk").innerHTML=h+h}
-ticker(RESERVA);
-fetch("https://api.github.com/users/luiscarlossoarespro-cyber/repos?sort=pushed&per_page=12").then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
-  const l=rs.filter(r=>!r.fork&&r.name!=="luiscarlossoarespro-cyber");if(!l.length)return;
-  $("n-repos").textContent=rs.filter(r=>!r.fork).length;
-  ticker(l.map(r=>[r.name,r.description,new Date(r.pushed_at).toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}).replace(".","")]))}).catch(()=>{});
-
-/* copiar e-mail */
-const cb=$("copy");if(cb)cb.addEventListener("click",()=>{const m=cb.dataset.mail;const ok=()=>{cb.textContent="e-mail copiado ✓";cb.classList.add("ok");setTimeout(()=>{cb.textContent=m+" · copiar";cb.classList.remove("ok")},2200)};
-  if(navigator.clipboard)navigator.clipboard.writeText(m).then(ok,()=>{location.href="mailto:"+m});else location.href="mailto:"+m});
-/* ---------- revelação e contadores ---------- */
-const els=document.querySelectorAll(".rv");
-if(!("IntersectionObserver" in window)||RED){els.forEach(e=>e.classList.add("in"))}else{
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -5% 0px"});
-  els.forEach(e=>io.observe(e))}
-function contar(b){if(RED)return;const n=+b.dataset.n,p=b.dataset.p||"",t0=performance.now();(function f(){const k=Math.max(0,Math.min(1,(performance.now()-t0)/1200)),e=1-Math.pow(1-k,4);b.textContent=p+Math.round(n*e).toLocaleString("pt-BR");if(k<1)requestAnimationFrame(f)})()}
-setTimeout(()=>document.querySelectorAll(".st b[data-n]").forEach(contar),250);
-})();
-</script>
 </body>
 </html>

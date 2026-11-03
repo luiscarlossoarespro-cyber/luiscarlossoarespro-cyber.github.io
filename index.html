@@ -8,13 +8,13 @@
 <meta property="og:title" content="Luis Carlos Machado Soares · Análise de Dados | Logística">
 <meta property="og:description" content="Do recebimento ao indicador: projetos com perguntas de gestão, base conferida e limitações escritas.">
 <meta property="og:image" content="https://luiscarlossoarespro-cyber.github.io/og-portfolio.png">
-<meta name="theme-color" content="#12303f">
+<meta name="theme-color" content="#0e2a47">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f2ec;--card:#ffffff;--ink:#14202a;--muted:#5a6872;--line:#dfdbcf;--navy:#12303f;--accent:#0f6b5c;--accent-soft:#e3f1ed;--warm:#b4561b;--warm-soft:#f8e8db;--note:#fff1b8;--note-ink:#5e4800;--bar:#0f6b5c;--bar2:#d3cdbd}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1418;--card:#141e24;--ink:#e8eef0;--muted:#9fb0b6;--line:#26343b;--navy:#0a1d27;--accent:#4fc3ad;--accent-soft:#11302b;--warm:#f09a5b;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#4fc3ad;--bar2:#2d3d44;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0d1418;--card:#141e24;--ink:#e8eef0;--muted:#9fb0b6;--line:#26343b;--navy:#0a1d27;--accent:#4fc3ad;--accent-soft:#11302b;--warm:#f09a5b;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#4fc3ad;--bar2:#2d3d44;color-scheme:dark}
+:root{--bg:#f3f6fa;--card:#ffffff;--ink:#0f1c2b;--muted:#4f5f75;--line:#d9e1ea;--navy:#0e2a47;--accent:#1a6fb0;--accent-soft:#e5eff9;--warm:#b45309;--warm-soft:#fbeedd;--note:#fff1b8;--note-ink:#5e4800;--bar:#1a6fb0;--bar2:#cfd9e5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b121b;--card:#121c28;--ink:#e6edf5;--muted:#9db0c6;--line:#243345;--navy:#08192b;--accent:#5aa9e6;--accent-soft:#12293f;--warm:#f0a35e;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#5aa9e6;--bar2:#2b3b4f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b121b;--card:#121c28;--ink:#e6edf5;--muted:#9db0c6;--line:#243345;--navy:#08192b;--accent:#5aa9e6;--accent-soft:#12293f;--warm:#f0a35e;--warm-soft:#3a2415;--note:#3a3210;--note-ink:#f1dc8a;--bar:#5aa9e6;--bar2:#2b3b4f;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
 .in{max-width:1040px;margin:0 auto;padding-inline:16px}
@@ -42,14 +42,14 @@ a{color:var(--accent)}
 .btn{display:inline-block;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem;border:1.5px solid var(--accent)}
 .btn.p{background:var(--accent);color:#fff}
 .btn.s{color:var(--accent);background:transparent}
-.sum{background:var(--navy);color:#e9f1f3;border-radius:14px;padding:22px;display:grid;gap:16px}
-.sum h3{font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:#9fc7d0;font-family:Inter,sans-serif;font-weight:600}
+.sum{background:var(--navy);color:#e8f0f8;border-radius:14px;padding:22px;display:grid;gap:16px}
+.sum h3{font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:#a6c4e3;font-family:Inter,sans-serif;font-weight:600}
 .sum dl{margin:0;display:grid;gap:14px}
-.sum dt{font-size:.76rem;color:#8fb1ba;text-transform:uppercase;letter-spacing:.08em}
+.sum dt{font-size:.76rem;color:#93b3d3;text-transform:uppercase;letter-spacing:.08em}
 .sum dd{margin:2px 0 0;font-size:.97rem}
-.sum .big{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px solid #2a4857;padding-top:16px}
+.sum .big{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px solid #2b4666;padding-top:16px}
 .sum .big b{display:block;font-family:"Source Serif 4",serif;font-size:1.55rem;font-variant-numeric:tabular-nums;color:#fff}
-.sum .big span{font-size:.74rem;color:#9fc7d0;line-height:1.3;display:block}
+.sum .big span{font-size:.74rem;color:#a6c4e3;line-height:1.3;display:block}
 section{padding-block:52px;border-top:1px solid var(--line)}
 .sec-head{display:grid;gap:8px;margin-bottom:26px}
 .sec-head p{color:var(--muted);max-width:64ch}
@@ -102,12 +102,13 @@ tr:last-child td{border-bottom:0}
 .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .form div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:.92rem}
 .form small{display:block;color:var(--muted);margin-top:2px}
+.fg{font-family:Inter,sans-serif;font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);font-weight:600;margin:26px 0 10px}.fg:first-of-type{margin-top:0}.fnote{color:var(--muted);font-size:.92rem;margin-top:22px}
 .quote{font-family:"Source Serif 4",serif;font-size:clamp(1.3rem,3vw,1.75rem);max-width:34ch;line-height:1.35;border-left:4px solid var(--warm);padding-left:18px}
-.contact{background:var(--navy);color:#e9f1f3;border-radius:16px;padding:clamp(22px,4vw,36px);display:grid;gap:14px}
+.contact{background:var(--navy);color:#e8f0f8;border-radius:16px;padding:clamp(22px,4vw,36px);display:grid;gap:14px}
 .contact h2{color:#fff}
-.contact p{color:#b9d3da;max-width:58ch}
+.contact p{color:#bdd3ea;max-width:58ch}
 .contact .btn.p{background:#fff;color:var(--navy);border-color:#fff}
-.contact .btn.s{color:#fff;border-color:#4f7686}
+.contact .btn.s{color:#fff;border-color:#5b7fa3}
 footer{padding-block:28px 56px;color:var(--muted);font-size:.88rem;display:grid;gap:6px}
 </style>
 </head>
@@ -244,14 +245,32 @@ footer{padding-block:28px 56px;color:var(--muted);font-size:.88rem;display:grid;
 </table></div>
 </section>
 <section id="formacao">
-<div class="sec-head"><h2>Formação continuada</h2><p>O que estou estudando, com a situação real de cada um.</p></div>
+<div class="sec-head"><h2>Formação</h2><p>Graduação e cursos ligados a dados, logística e IA, com a situação real de cada um.</p></div>
+<h3 class="fg">Graduação</h3>
 <div class="form">
-<div><b>Dados com Python e IA</b><small>Santander Open Academy · selecionado</small></div>
-<div><b>Imersão Agentes de IA na Prática</b><small>Daxus · 8 h · concluída</small></div>
-<div><b>Finanças com IA</b><small>Negócio em Dia · concluída</small></div>
-<div><b>SCRUM: Gerenciando Projetos com Agilidade</b><small>IFRS · iniciado</small></div>
-<div><b>NR-11: operação com transpaleteira</b><small>Reciclagem · 8 h · concluída</small></div>
+<div><b>Administração de Empresas · Tecnólogo em Processos Gerenciais</b><small>UniFatecie · em andamento</small></div>
 </div>
+<h3 class="fg">Dados e Excel</h3>
+<div class="form">
+<div><b>Excel 2019: Gestão e Análise de Dados</b><small>LinkedIn Learning · concluído</small></div>
+<div><b>Dados com Python e IA</b><small>Santander Open Academy · em andamento</small></div>
+<div><b>Microsoft Excel do básico ao avançado</b><small>Eduliv · 24 h · em andamento</small></div>
+<div><b>Excel para Análise de Dados</b><small>Preditiva.ai · em andamento</small></div>
+<div><b>Introdução ao mundo dos dados</b><small>Preditiva.ai · em andamento</small></div>
+</div>
+<h3 class="fg">Logística e operações</h3>
+<div class="form">
+<div><b>Fundamentos da Cadeia de Suprimentos</b><small>LinkedIn Learning · concluído</small></div>
+<div><b>Competências Profissionais: Cadeia de Suprimentos e Operações</b><small>LinkedIn Learning · concluído</small></div>
+<div><b>Fundamentos da Excelência Operacional</b><small>LinkedIn Learning · concluído</small></div>
+</div>
+<h3 class="fg">IA e ferramentas</h3>
+<div class="form">
+<div><b>Intensivão de Claude</b><small>Hashtag Treinamentos · 8 h · concluído</small></div>
+<div><b>Digital Product Week 2026</b><small>Tera · 18 h · concluído</small></div>
+<div><b>Lovable: ideias do papel sem usar código</b><small>Stack · 9 h · concluído</small></div>
+</div>
+<p class="fnote">Cursos de liderança, gestão e comunicação estão no <a href="CV_LUIS_CARLOS_MACHADO_SOARES_Analista_de_Logistica.pdf">currículo em PDF</a>.</p>
 </section>
 <section>
 <p class="quote">"Na logística, aprendi que um erro na conferência sempre aparece lá na frente. Levei essa mesma lógica para os dados."</p>

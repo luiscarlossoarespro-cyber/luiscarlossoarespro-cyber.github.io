@@ -10,6 +10,34 @@
 */
 window.PROJETOS = [
   {
+    id: "desvios",
+    destaque: false,
+    area: "Logística",
+    ano: 2026,
+    titulo: "Causas dos desvios nos indicadores de logística",
+    tipo: "Python · SQL (DuckDB) · estatística · dashboard com filtros",
+    resumo: "Análise de 62.897 pedidos válidos (base pública DataCo, de 65.752) para descobrir o que explica o atraso. O dashboard tem filtros de Ano e Mês que recalculam todos os números, um simulador de prazos e um plano de ação.",
+    pergunta: "O indicador mostra que os pedidos atrasam. O que explica o atraso: região, cliente, categoria, época ou o prazo que a empresa promete?",
+    fluxo: ["Base pública DataCo (65.752 pedidos)", "Auditoria e regras de exclusão", "Análise estatística com controle de falsos alarmes", "Conferência por SQL no arquivo original", "Dashboard com filtros e simulador"],
+    destaques: [
+      "57,3% dos pedidos atrasam, e nenhum país, categoria ou mês fica fora do esperado: o atraso vem do prazo prometido em cada modo de envio",
+      "First Class promete 1 dia e leva 2: 100% atrasam. Prometendo 2 dias, o atraso cai de 57,3% para 42,0% (simulação)",
+      "241 verificações do dashboard contra SQL em 10 recortes de Ano e Mês, 0 divergências"
+    ],
+    decisao: "Apoia revisar o prazo prometido por modo de envio antes de investigar região ou cliente. Prometer mais dias reduz o atraso, mas aumenta a espera do cliente; o simulador mostra essa troca.",
+    limites: [
+      "O autor da base não informa se os dados são reais ou simulados; nada aqui é afirmação sobre uma empresa real",
+      "A base não separa as etapas do processo (separação, transporte), então não mostra a causa física do atraso",
+      "A moeda dos valores não está informada"
+    ],
+    ferramentas: ["Python", "SQL (DuckDB)", "Google Sheets", "Dashboard web (HTML · JS)", "Playwright"],
+    capa: "https://raw.githubusercontent.com/luiscarlossoarespro-cyber/causas-desvios-indicadores-logistica/main/capa_dashboard.png",
+    links: [
+      { r: "Abrir dashboard", u: "https://luiscarlossoarespro-cyber.github.io/causas-desvios-indicadores-logistica/dashboard/", p: true },
+      { r: "Código e resultados", u: "https://github.com/luiscarlossoarespro-cyber/causas-desvios-indicadores-logistica" }
+    ]
+  },
+  {
     id: "conformidade",
     destaque: false,
     area: "Logística",

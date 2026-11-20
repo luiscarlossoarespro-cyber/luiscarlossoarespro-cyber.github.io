@@ -95,7 +95,109 @@ body.nomarks .chg{display:none}
 .cs p{margin:0 0 0.625rem}.fc{position:relative}.fc .gicon{position:absolute;left:0.875rem;top:0.875rem;font-size:1.375rem}
 .view[hidden]{display:none}
 .rv{opacity:0;transform:translateY(1.125rem);transition:.6s}.rv.in{opacity:1;transform:none}
-html{font-size:16px}@media(min-width:1920px){html{font-size:19px}}@media(min-width:2560px){html{font-size:25px}}@media(min-width:3200px){html{font-size:31px}}</style></head><body>
+html{font-size:16px}@media(min-width:1920px){html{font-size:19px}}@media(min-width:2560px){html{font-size:25px}}@media(min-width:3200px){html{font-size:31px}}/* ===== PRÉVIA: novo visual (escuro, vibrante, com movimento) ===== */
+:root{--bg:#070b1a;--tx:#eaf0ff;--mu:#9aa8d4;--bd:#1d2a5c;--card:#0e1632;--card2:#121c40;--lt2:#17235a;--lt:#ffd23f;
+--grad:linear-gradient(110deg,#ff3d81 0%,#ff8a00 28%,#7c3aed 62%,#00b4ff 100%);
+--acc:linear-gradient(120deg,#ffd23f,#ff8a00 55%,#ff3d81);--acct:#1a0b00;--tl:#7aa2ff;--tl2:#9db8ff;--glow:#7c3aed88}
+@keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #ffd23f88}70%{box-shadow:0 0 0 14px #ffd23f00}100%{box-shadow:0 0 0 0 #ffd23f00}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shine{0%{transform:translateX(-120%)}100%{transform:translateX(220%)}}
+body{background:radial-gradient(1200px 600px at 85% -10%,#2a1368 0%,transparent 60%),radial-gradient(900px 500px at -10% 30%,#07305e 0%,transparent 55%),#070b1a;background-attachment:fixed;color:var(--tx)}
+.hd{position:relative}.hd .logo,.hd>div:first-child{background:var(--grad);background-size:200% 200%;animation:flow 8s ease infinite;-webkit-background-clip:text;background-clip:text;color:transparent}
+.cvb button{border-color:#ff8a00;color:#ffd9a8;background:#ff8a0014}.cvb button:hover{background:var(--acc);color:#1a0b00}
+.cvb ul{background:#0e1632;border-color:var(--bd);box-shadow:0 1rem 2.5rem #000a}.cvb li:hover{background:#17235a}
+.hero h1 span{background:linear-gradient(100deg,#ff3d81,#ffb020,#7cffcb,#00b4ff,#b266ff,#ff3d81);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 9s linear infinite}
+.loc{color:#ffd23f}.pitch{border-left-color:#ff8a00;color:#c4cff0}
+.btn{border-color:#7aa2ff;color:#cfe0ff;transition:.25s}.btn:hover{background:#7aa2ff22;transform:translateY(-3px)}
+.btn.p{background:linear-gradient(110deg,#ff3d81,#ff8a00,#ffd23f);background-size:200% 200%;animation:flow 6s ease infinite;color:#1a0b00;font-weight:600;box-shadow:0 .6rem 1.8rem #ff3d8155}
+.ph .im{border:0.5rem solid #0e1632;box-shadow:0 0 0 .22rem #ff8a00,0 0 0 .7rem #ff3d8144,0 1.5rem 4.5rem #7c3aed99}
+.ph:before{content:"";position:absolute;inset:-1.1rem;border-radius:50%;border:2px dashed #ffffff40;animation:spin 40s linear infinite}
+.c1{animation:float 5s ease-in-out infinite}.c2{animation:float 6.5s ease-in-out infinite .8s}.c3{animation:float 5.5s ease-in-out infinite 1.6s}
+.c1{background:#ffd23f}.c2{background:#ff3d81}.c3{background:#19e3b1}
+.nums{background:linear-gradient(90deg,#0e1632,#14204d,#0e1632);border-color:var(--bd)}
+.nums div b{background:var(--grad);background-size:200% 200%;animation:flow 7s ease infinite;-webkit-background-clip:text;background-clip:text;color:transparent}
+.nums div span{color:#aab6dd}
+.band{background:linear-gradient(115deg,#ff3d81,#7c3aed 45%,#0a6cff 80%,#00b4ff);background-size:220% 220%;animation:flow 14s ease infinite}
+.bigk2{color:#ffe08a}
+.tc{background:#ffffff1f;backdrop-filter:blur(6px);border:1px solid #ffffff3a;transition:.3s}.tc:hover{transform:translateY(-6px);background:#ffffff2e}
+.tc .ch i{background:#0b1230;color:#eaf0ff;border:1px solid #ffffff2a}
+.tc .ex,.vt .btn{background:var(--acc);color:#1a0b00}
+.expsec{background:transparent}
+.tlw:before{background:linear-gradient(#ff3d81,#ff8a00,#7c3aed,#00b4ff);width:.35rem}
+.ec{background:var(--card);border-color:var(--bd);transition:.3s;position:relative;overflow:hidden}
+.ec:hover{transform:translateX(-6px);border-color:#ff8a00;box-shadow:0 .8rem 2.2rem #ff3d8133}
+.ec:after{background:#ffd23f;border-color:#070b1a;animation:pulse 2.4s infinite}
+.ec:before{content:"";position:absolute;top:0;left:0;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff0d,transparent);transform:translateX(-120%);pointer-events:none}.ec:hover:before{animation:shine 1.1s}
+.av{background:var(--grad);background-size:200% 200%;animation:flow 6s ease infinite}
+.eh .co{color:#ffb86b}.ec>p{color:#b4c0e6}
+.mt{background:#1b2b6b;color:#cfe0ff}.tgs i{background:#121c40;color:#b9c6ee;border:1px solid #243576}
+.sp{background:linear-gradient(150deg,#ff3d81,#7c3aed 55%,#0a6cff);background-size:200% 200%;animation:flow 12s ease infinite}
+.sp:before{background:#ffd23f;opacity:.25}
+.dest{background:linear-gradient(115deg,#7c3aed,#0a6cff 55%,#00b4ff);background-size:220% 220%;animation:flow 16s ease infinite}
+.pc{background:linear-gradient(160deg,#141f4d,#0a1130);border:1px solid #2a3a7a;box-shadow:0 1rem 2.4rem #0008;transition:.3s}
+.pc:hover{transform:translateY(-.6rem) rotate(-.4deg);border-color:#ff8a00;box-shadow:0 1.4rem 3rem #ff3d8144}
+.pc .th{position:relative}.pc .th:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,#0a1130cc)}
+.pc img{transition:.6s}.pc:hover img{transform:scale(1.06)}
+.cat{background:var(--acc);color:#1a0b00;font-weight:500}
+.arw{background:#ffffffdd}
+.fsec{background:transparent}.ft:before{background:linear-gradient(#ff3d81,#ff8a00,#7c3aed,#00b4ff);width:.35rem}
+.fi:after{background:#ffd23f;border-color:#070b1a;animation:pulse 2.6s infinite}
+.fc{background:var(--card);border-color:var(--bd);transition:.3s}.fc:hover{border-color:#7aa2ff;transform:translateY(-4px)}
+.fc h3{border-color:#ff8a00!important}.fc .sc{color:#ffb86b}.fc small,.fc .yr{color:#9aa8d4}
+.cs div{background:var(--card);border-color:var(--bd)}.cs h5{color:#ffb86b}.cs span{color:#9aa8d4}
+.iag div{background:linear-gradient(135deg,#ff3d81,#7c3aed);background-size:200% 200%;animation:flow 10s ease infinite}
+.iag div:nth-child(2){background:linear-gradient(135deg,#7c3aed,#0a6cff);background-size:200% 200%}
+.iag div:nth-child(3){background:linear-gradient(135deg,#0a6cff,#00b4ff);background-size:200% 200%}
+.vg div{background:var(--card);border-color:var(--bd)}.vg div small{color:#9aa8d4}
+.ct{background:linear-gradient(115deg,#ff3d81,#7c3aed 50%,#0a6cff);background-size:220% 220%;animation:flow 14s ease infinite}
+.ct .bs2 a{color:#1a0b00}.ct .bs2 a.o{color:#fff}
+.fm input,.fm textarea{background:#0b1230;color:#eaf0ff;border:1px solid #ffffff30}
+.ph1{background:linear-gradient(115deg,#ff3d81,#7c3aed 50%,#0a6cff);background-size:220% 220%;animation:flow 14s ease infinite}
+.flt h5{color:#9aa8d4}.flt .top a{color:#ffb86b}.flt input{accent-color:#ff8a00}
+.dh .tg,.chips i{background:#17235a;color:#cfe0ff}
+.dh p{color:#b4c0e6}.sc2{background:var(--card2);border:1px solid var(--bd)}.sc2 small{color:#ffb86b}
+.shot{border-color:#2a3a7a;box-shadow:0 1.4rem 3.4rem #7c3aed55}
+.mm div{background:var(--card);border-color:var(--bd)}.mm b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.mm span{color:#9aa8d4}
+.dh2 li{color:#c4cff0}
+.rail{background:var(--grad);background-size:200% 200%;animation:flow 8s ease infinite}
+.up{background:var(--acc);color:#1a0b00}
+.st.ok{background:#0e3b2c;color:#6cf2b9}.st.wip{background:#4a3500;color:#ffd23f}
+.sk h2{color:#eaf0ff}.sk .ic{background:linear-gradient(135deg,#17235a,#0e1632)}
+.lk{color:#ffb86b}
+a:focus-visible,button:focus-visible{outline:2px solid #ffd23f;outline-offset:3px}
+::selection{background:#ff3d81;color:#fff}
+.pv{display:none!important}
+.pbanner{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#ffd23f,#ff8a00);color:#1a0b00;text-align:center;padding:.45rem 1rem;font-size:.8125rem;font-weight:600}
+/* ===== celular e tablet ===== */
+@media(max-width:56.25rem){
+html,body{overflow-x:hidden}
+.w{padding:0 1.1rem}
+.hd{padding:.9rem 0}.hd>div:first-child{font-size:1.6rem!important;white-space:nowrap}.hd nav{gap:.8rem;font-size:.8rem}.cvb button{padding:.4rem .7rem;font-size:.75rem}
+.hero{grid-template-columns:1fr;padding:.5rem 0 2.2rem;gap:1.2rem}.hero h1{font-size:3.3rem}
+.ph{width:min(78vw,18rem);height:min(78vw,18rem)}.pitch{font-size:.95rem}
+.bs{flex-wrap:wrap}.rail{display:none}
+.nums .w{grid-template-columns:1fr 1fr}.nums div b{font-size:2.4rem}
+.band{position:relative;top:0;height:auto;padding:2.2rem 0 3rem}.band .w{grid-template-columns:1fr;gap:1.2rem}
+.bigk{font-size:5rem}.bigk2{font-size:2.2rem}
+.tcs{grid-template-columns:1fr;gap:2.2rem}.tc{height:auto;padding-bottom:2.2rem}
+.exg,.fg,.cg,.dh,.pg{grid-template-columns:1fr;gap:1.4rem}
+.tlw{padding-right:0}.tlw:before,.ec:after{display:none}
+.sp,.sk{position:relative;top:0}.sp h2{font-size:2.8rem}
+.eh{flex-wrap:wrap}.eh .dt{margin-left:0;text-align:left;width:100%}
+.ft:before,.fi:after{display:none}.fi{grid-template-columns:1fr}.fc{width:100%}.fi:nth-child(even) .fc{grid-column:1}
+.cs,.vg,.iag,.mm{grid-template-columns:1fr}
+.dest h2,.sec2 h2,.ct h2{font-size:2.4rem}
+.trk{gap:1rem}.pc{flex:0 0 78vw}.arw{display:none}
+.gr{grid-template-columns:1fr}.flt{order:2}
+.ph1 h1,.dh h1{font-size:2.6rem}
+.dh2 h3{font-size:1.7rem}
+.shot{margin:1rem 0}
+.pbanner{font-size:.7rem}
+}
+
+</style></head><body>
 <div class="rail"><a href="mailto:luiscarlos.soarespro@gmail.com"><b>@</b></a><a href="https://www.linkedin.com/in/luiscarlos-log" target="_blank"><b>in</b></a><a href="https://github.com/luiscarlossoarespro-cyber" target="_blank"><b>GH</b></a><a href="https://wa.me/5551992685728" target="_blank"><b>☎</b></a></div><button class="up" onclick="scrollTo({top:0})">↑</button>
 <div class="w"><div class="hd"><div class="nm" onclick="go('home')">Luis Carlos</div><nav><a onclick="go('proj')">Projetos</a><a href="#contato">Contato</a>
 <div class="cvb"><a href="CV_LUIS_CARLOS_MACHADO_SOARES_Analista_de_Logistica.pdf" download target="_blank" rel="noopener"><button type="button">Baixar currículo</button></a></div></nav></div></div>
